@@ -102,15 +102,15 @@ BigNumbers::BigNumbers(LiquidCrystal* lcd)
 
 void BigNumbers::begin()
 {
-	// assignes each segment a write number
-	lcd.createChar(0,LT);
-	lcd.createChar(1,UB);
-	lcd.createChar(2,RT);
-	lcd.createChar(3,LL);
-	lcd.createChar(4,LB);
-	lcd.createChar(5,LR);
-	lcd.createChar(6,MB);
-	lcd.createChar(7,block);
+	// assignes each segment a print number
+	_lcd->createChar(0,LT);
+	_lcd->createChar(1,UB);
+	_lcd->createChar(2,RT);
+	_lcd->createChar(3,LL);
+	_lcd->createChar(4,LB);
+	_lcd->createChar(5,LR);
+	_lcd->createChar(6,MB);
+	_lcd->createChar(7,block);
 }
 
 // x is column of upper left corner for large character
@@ -130,114 +130,114 @@ void BigNumbers:printDigit(byte n, byte x)
 		case 0:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(0);
-			_lcd->write(1);
-			_lcd->write(2);
+			_lcd->print(0);
+			_lcd->print(1);
+			_lcd->print(2);
 			_lcd->setCursor(0, 1);
-			_lcd->write(3);
-			_lcd->write(4);
-			_lcd->write(5);
+			_lcd->print(3);
+			_lcd->print(4);
+			_lcd->print(5);
 			break;
 		}
 		case 1:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(1);
-			_lcd->write(2);
+			_lcd->print(1);
+			_lcd->print(2);
 			_lcd->setCursor(0, 1);
-			_lcd->write(4);
-			_lcd->write(7);
-			_lcd->write(4);
+			_lcd->print(4);
+			_lcd->print(7);
+			_lcd->print(4);
 			break;
 		}
 		case 2:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(6);
-			_lcd->write(6);
-			_lcd->write(2);
+			_lcd->print(6);
+			_lcd->print(6);
+			_lcd->print(2);
 			_lcd->setCursor(0, 1);
-			_lcd->write(3);
-			_lcd->write(4);
-			_lcd->write(4);
+			_lcd->print(3);
+			_lcd->print(4);
+			_lcd->print(4);
 			break;
 		}
 		case 3:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(6);
-			_lcd->write(6);
-			_lcd->write(2);
+			_lcd->print(6);
+			_lcd->print(6);
+			_lcd->print(2);
 			_lcd->setCursor(0, 1);
-			_lcd->write(4);
-			_lcd->write(4);
-			_lcd->write(5);
+			_lcd->print(4);
+			_lcd->print(4);
+			_lcd->print(5);
 			break;
 		}
 		case 4:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(3);
-			_lcd->write(4);
-			_lcd->write(7);
+			_lcd->print(3);
+			_lcd->print(4);
+			_lcd->print(7);
 			_lcd->setCursor(2, 1);
-			_lcd->write(7);
+			_lcd->print(7);
 			break;
 		}
 		case 5:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(3);
-			_lcd->write(6);
-			_lcd->write(6);
+			_lcd->print(3);
+			_lcd->print(6);
+			_lcd->print(6);
 			_lcd->setCursor(0, 1);
-			_lcd->write(4);
-			_lcd->write(4);
-			_lcd->write(5);
+			_lcd->print(4);
+			_lcd->print(4);
+			_lcd->print(5);
 			break;
 		}
 		case 6:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(0);
-			_lcd->write(6);
-			_lcd->write(6);
+			_lcd->print(0);
+			_lcd->print(6);
+			_lcd->print(6);
 			_lcd->setCursor(0, 1);
-			_lcd->write(3);
-			_lcd->write(4);
-			_lcd->write(5);
+			_lcd->print(3);
+			_lcd->print(4);
+			_lcd->print(5);
 			break;
 		}
 		case 7:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(1);
-			_lcd->write(1);
-			_lcd->write(2);
+			_lcd->print(1);
+			_lcd->print(1);
+			_lcd->print(2);
 			_lcd->setCursor(2, 1);
-			_lcd->write(7);
+			_lcd->print(7);
 			break;
 		}
 		case 8:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(0);
-			_lcd->write(6);
-			_lcd->write(2);
+			_lcd->print(0);
+			_lcd->print(6);
+			_lcd->print(2);
 			_lcd->setCursor(0, 1);
-			_lcd->write(3);
-			_lcd->write(4);
-			_lcd->write(5);
+			_lcd->print(3);
+			_lcd->print(4);
+			_lcd->print(5);
 			break;
 		}
 		case 9:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->write(0);
-			_lcd->write(6);
-			_lcd->write(2);
+			_lcd->print(0);
+			_lcd->print(6);
+			_lcd->print(2);
 			_lcd->setCursor(2, 1);
-			_lcd->write(7);
+			_lcd->print(7);
 			break;
 		}
 	}
