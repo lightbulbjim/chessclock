@@ -123,7 +123,7 @@ void BigNumbers::clearDigit(byte x)
 }
 
 // n is number to display, x is column of upper left corner for large character
-void BigNumbers:printDigit(byte n, byte x)
+void BigNumbers::printDigit(byte n, byte x)
 {
 	switch (n)
 	{

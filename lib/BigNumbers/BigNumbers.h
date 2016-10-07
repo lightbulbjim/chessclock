@@ -17,6 +17,6 @@ class BigNumbers
 		void printDigit(byte, byte);
 	private:
 		LiquidCrystal* _lcd;
-}
+};
 
 #endif
