@@ -1,7 +1,5 @@
 /**
- * Blink
- *
- * Simple blinky thing.
+ * Chess Clock Hacking.
  */
 #include "Arduino.h"
 #include "LiquidCrystal.h"
