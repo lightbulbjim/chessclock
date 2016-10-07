@@ -1,5 +1,5 @@
 /*
-	BigNumbers.h - Library for printing big numbers to a 20x4 LCD.
+	BigNumbers.cpp - Library for printing big numbers to a 20x4 LCD.
 */
 
 #include "BigNumbers.h"
@@ -130,114 +130,114 @@ void BigNumbers::printDigit(byte n, byte x)
 		case 0:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(0);
-			_lcd->print(1);
-			_lcd->print(2);
+			_lcd->write(byte(0));
+			_lcd->write(byte(1));
+			_lcd->write(byte(2));
 			_lcd->setCursor(0, 1);
-			_lcd->print(3);
-			_lcd->print(4);
-			_lcd->print(5);
+			_lcd->write(byte(3));
+			_lcd->write(byte(4));
+			_lcd->write(byte(5));
 			break;
 		}
 		case 1:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(1);
-			_lcd->print(2);
+			_lcd->write(byte(1));
+			_lcd->write(byte(2));
 			_lcd->setCursor(0, 1);
-			_lcd->print(4);
-			_lcd->print(7);
-			_lcd->print(4);
+			_lcd->write(byte(4));
+			_lcd->write(byte(7));
+			_lcd->write(byte(4));
 			break;
 		}
 		case 2:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(6);
-			_lcd->print(6);
-			_lcd->print(2);
+			_lcd->write(byte(6));
+			_lcd->write(byte(6));
+			_lcd->write(byte(2));
 			_lcd->setCursor(0, 1);
-			_lcd->print(3);
-			_lcd->print(4);
-			_lcd->print(4);
+			_lcd->write(byte(3));
+			_lcd->write(byte(4));
+			_lcd->write(byte(4));
 			break;
 		}
 		case 3:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(6);
-			_lcd->print(6);
-			_lcd->print(2);
+			_lcd->write(byte(6));
+			_lcd->write(byte(6));
+			_lcd->write(byte(2));
 			_lcd->setCursor(0, 1);
-			_lcd->print(4);
-			_lcd->print(4);
-			_lcd->print(5);
+			_lcd->write(byte(4));
+			_lcd->write(byte(4));
+			_lcd->write(byte(5));
 			break;
 		}
 		case 4:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(3);
-			_lcd->print(4);
-			_lcd->print(7);
+			_lcd->write(byte(3));
+			_lcd->write(byte(4));
+			_lcd->write(byte(7));
 			_lcd->setCursor(2, 1);
-			_lcd->print(7);
+			_lcd->write(byte(7));
 			break;
 		}
 		case 5:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(3);
-			_lcd->print(6);
-			_lcd->print(6);
+			_lcd->write(byte(3));
+			_lcd->write(byte(6));
+			_lcd->write(byte(6));
 			_lcd->setCursor(0, 1);
-			_lcd->print(4);
-			_lcd->print(4);
-			_lcd->print(5);
+			_lcd->write(byte(4));
+			_lcd->write(byte(4));
+			_lcd->write(byte(5));
 			break;
 		}
 		case 6:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(0);
-			_lcd->print(6);
-			_lcd->print(6);
+			_lcd->write(byte(0));
+			_lcd->write(byte(6));
+			_lcd->write(byte(6));
 			_lcd->setCursor(0, 1);
-			_lcd->print(3);
-			_lcd->print(4);
-			_lcd->print(5);
+			_lcd->write(byte(3));
+			_lcd->write(byte(4));
+			_lcd->write(byte(5));
 			break;
 		}
 		case 7:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(1);
-			_lcd->print(1);
-			_lcd->print(2);
+			_lcd->write(byte(1));
+			_lcd->write(byte(1));
+			_lcd->write(byte(2));
 			_lcd->setCursor(2, 1);
-			_lcd->print(7);
+			_lcd->write(byte(7));
 			break;
 		}
 		case 8:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(0);
-			_lcd->print(6);
-			_lcd->print(2);
+			_lcd->write(byte(0));
+			_lcd->write(byte(6));
+			_lcd->write(byte(2));
 			_lcd->setCursor(0, 1);
-			_lcd->print(3);
-			_lcd->print(4);
-			_lcd->print(5);
+			_lcd->write(byte(3));
+			_lcd->write(byte(4));
+			_lcd->write(byte(5));
 			break;
 		}
 		case 9:
 		{
 			_lcd->setCursor(0,0);
-			_lcd->print(0);
-			_lcd->print(6);
-			_lcd->print(2);
+			_lcd->write(byte(0));
+			_lcd->write(byte(6));
+			_lcd->write(byte(2));
 			_lcd->setCursor(2, 1);
-			_lcd->print(7);
+			_lcd->write(byte(7));
 			break;
 		}
 	}
