@@ -23,15 +23,20 @@ void setup()
 void lcdTest()
 {
 	int i;
-	for ( i=0; i<=10; i++ ) {
-		left.clearDigit(0);
+	for ( i=0; i<=9; i++ ) {
 		left.printDigit(i, 0);
+		left.printColon(3);
+		left.printDigit(i, 4);
+		left.printDigit(i, 7);
+		left.printColon(10);
+		left.printDigit(i, 11);
+		left.printDigit(i, 14);
 
 		rightDisplay.clear();
 		rightDisplay.print("Testing right ");
 		rightDisplay.print(i);
 
-		delay(1000);
+		delay(2000);
 	}
 }
 

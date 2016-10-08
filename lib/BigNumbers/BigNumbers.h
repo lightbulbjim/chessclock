@@ -14,6 +14,7 @@ class BigNumbers
 		BigNumbers(LiquidCrystal*);
 		void begin();
 		void clearDigit(byte);
+		void printColon(byte);
 		void printDigit(byte, byte);
 	private:
 		LiquidCrystal* _lcd;
