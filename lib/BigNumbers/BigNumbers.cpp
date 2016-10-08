@@ -180,7 +180,7 @@ void BigNumbers::printDigit(byte n, byte x)
 			_lcd->write(byte(3));
 			_lcd->write(byte(4));
 			_lcd->write(byte(7));
-			_lcd->setCursor(x, 1);
+			_lcd->setCursor(x + 2, 1);
 			_lcd->write(byte(7));
 			break;
 		}
@@ -214,7 +214,7 @@ void BigNumbers::printDigit(byte n, byte x)
 			_lcd->write(byte(1));
 			_lcd->write(byte(1));
 			_lcd->write(byte(2));
-			_lcd->setCursor(x, 1);
+			_lcd->setCursor(x + 2, 1);
 			_lcd->write(byte(7));
 			break;
 		}
@@ -236,7 +236,7 @@ void BigNumbers::printDigit(byte n, byte x)
 			_lcd->write(byte(0));
 			_lcd->write(byte(6));
 			_lcd->write(byte(2));
-			_lcd->setCursor(x, 1);
+			_lcd->setCursor(x + 2, 1);
 			_lcd->write(byte(7));
 			break;
 		}
