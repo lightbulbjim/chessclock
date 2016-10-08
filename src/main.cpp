@@ -23,7 +23,7 @@ void setup()
 void lcdTest()
 {
 	int i;
-	for ( i=1; i<=10; i++ ) {
+	for ( i=0; i<=10; i++ ) {
 		left.clearDigit(0);
 		left.printDigit(i, 0);
 
