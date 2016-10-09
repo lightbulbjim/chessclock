@@ -1,17 +1,17 @@
 /*
-	BigNumbers.h - Library for printing big numbers to a 20x4 LCD.
+	BigTime.h - Library for printing big numbers to a 20x4 LCD.
 */
 
-#ifndef BigNumbers_h
-#define BigNumbers_h
+#ifndef BigTime_h
+#define BigTime_h
 
 #include "Arduino.h"
 #include "LiquidCrystal.h"
 
-class BigNumbers
+class BigTime
 {
 	public:
-		BigNumbers(LiquidCrystal*);
+		BigTime(LiquidCrystal*);
 		void begin();
 		void clearDigit(byte);
 		void printColon(byte);

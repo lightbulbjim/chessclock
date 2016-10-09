@@ -1,8 +1,8 @@
 /*
-	BigNumbers.cpp - Library for printing big numbers to a 20x4 LCD.
+	BigTime.cpp - Library for printing big numbers to a 20x4 LCD.
 */
 
-#include "BigNumbers.h"
+#include "BigTime.h"
 
 byte custom1[8] = 
 {
@@ -93,14 +93,14 @@ byte block[8] =
  B11111
 };
 
-// Creates BigNumbers object
+// Creates BigTime object
 // LiquidCrystal* lcd: LiquidCrystal object to use
-BigNumbers::BigNumbers(LiquidCrystal* lcd)
+BigTime::BigTime(LiquidCrystal* lcd)
 {
 	_lcd = lcd;
 }
 
-void BigNumbers::begin()
+void BigTime::begin()
 {
 	// assignes each segment a print number
 	_lcd->createChar(0,custom1);
@@ -114,7 +114,7 @@ void BigNumbers::begin()
 }
 
 // x is column of upper left corner for large character
-void BigNumbers::clearDigit(byte x)
+void BigTime::clearDigit(byte x)
 {
 	_lcd->setCursor(x,0);
 	_lcd->print("   ");
@@ -125,7 +125,7 @@ void BigNumbers::clearDigit(byte x)
 }
 
 // x is column of upper left corner for large character
-void BigNumbers::printColon(byte x)
+void BigTime::printColon(byte x)
 {
 	_lcd->setCursor(x,0);
 	_lcd->print("o");
@@ -134,7 +134,7 @@ void BigNumbers::printColon(byte x)
 }
 
 // n is number to display, x is column of upper left corner for large character
-void BigNumbers::printDigit(byte n, byte x)
+void BigTime::printDigit(byte n, byte x)
 {
 	clearDigit(x);
 	switch (n)

@@ -4,12 +4,12 @@
 
 #include "Arduino.h"
 #include "LiquidCrystal.h"
-#include <BigNumbers.h>
+#include <BigTime.h>
 
 LiquidCrystal leftDisplay(6, 7, 2, 3, 4, 5);
 LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
 
-BigNumbers left(&leftDisplay);
+BigTime left(&leftDisplay);
 
 void setup()
 {
