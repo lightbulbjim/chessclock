@@ -12,13 +12,14 @@ class BigTime
 {
 	public:
 		BigTime(LiquidCrystal*);
-		void clearDigit(byte x);
-		void printColon(byte x);
-		void printDigit(byte digit, byte x);
 		void printTime(byte hours, byte minutes, byte seconds);
 	private:
 		LiquidCrystal* lcd;
 		byte digitWidth;
+		void clearDigit(byte x);
+		void printColon(byte x);
+		void printDigit(byte digit, byte x);
+		void printValue(byte value, byte x);
 };
 
 #endif

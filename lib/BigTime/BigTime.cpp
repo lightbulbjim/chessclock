@@ -4,6 +4,7 @@
 
 #include <BigTime.h>
 
+
 byte custom1[8] = 
 {
  B00011,
@@ -93,6 +94,7 @@ byte block[8] =
  B11111
 };
 
+
 BigTime::BigTime(LiquidCrystal* lcd)
 {
 	this->lcd = lcd;
@@ -109,15 +111,17 @@ BigTime::BigTime(LiquidCrystal* lcd)
 	this->lcd->createChar(7,block);
 }
 
+
 void BigTime::clearDigit(byte x)
 {
 	this->lcd->setCursor(x,0);
-	this->lcd->print("   ");
+	this->lcd->print(F("   "));
 	this->lcd->setCursor(x,1); 
-	this->lcd->print("   ");
+	this->lcd->print(F("   "));
 	this->lcd->setCursor(x,2); 
-	this->lcd->print("   ");
+	this->lcd->print(F("   "));
 }
+
 
 void BigTime::printColon(byte x)
 {
@@ -126,6 +130,7 @@ void BigTime::printColon(byte x)
 	this->lcd->setCursor(x,1);
 	this->lcd->print("o");
 }
+
 
 void BigTime::printDigit(byte digit, byte x)
 {
@@ -286,7 +291,35 @@ void BigTime::printDigit(byte digit, byte x)
 	}
 }
 
-void printTime(byte hours, byte minutes, byte seconds)
+
+void BigTime::printValue(byte value, byte x)
 {
-	
+	if (value < 10) {
+		this->printDigit(0, x);
+		this->printDigit(value, x + this->digitWidth);
+	} else {
+		this->printDigit((value / 10) % 10, x);
+		this->printDigit(value % 10, x + this->digitWidth);
+	}
+}
+
+
+void BigTime::printTime(byte hours, byte minutes, byte seconds)
+{
+	byte x = 0;
+
+	this->printValue(hours, x);
+	x = x + (this->digitWidth * 2);
+
+	this->printColon(x);
+	x = x + 1;
+
+	this->printValue(minutes, x);
+	x = x + (this->digitWidth * 2);
+
+	this->printColon(x);
+	x = x + 1;
+
+	this->printValue(seconds, x);
+	x = x + (this->digitWidth * 2);
 }
