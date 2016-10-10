@@ -12,7 +12,6 @@ class BigTime
 {
 	public:
 		BigTime(LiquidCrystal*);
-		void begin();
 		void clearDigit(byte);
 		void printColon(byte);
 		void printDigit(byte, byte);
