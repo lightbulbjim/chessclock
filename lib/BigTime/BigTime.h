@@ -16,7 +16,7 @@ class BigTime
 		void printColon(byte);
 		void printDigit(byte, byte);
 	private:
-		LiquidCrystal* _lcd;
+		LiquidCrystal* lcd;
 };
 
 #endif

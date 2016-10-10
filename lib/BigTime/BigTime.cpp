@@ -95,37 +95,37 @@ byte block[8] =
 
 BigTime::BigTime(LiquidCrystal* lcd)
 {
-	_lcd = lcd;
+	this->lcd = lcd;
 
 	// assignes each segment a print number
-	_lcd->createChar(0,custom1);
-	_lcd->createChar(1,custom2);
-	_lcd->createChar(2,custom3);
-	_lcd->createChar(3,custom4);
-	_lcd->createChar(4,custom5);
-	_lcd->createChar(5,custom6);
-	_lcd->createChar(6,custom7);
-	_lcd->createChar(7,block);
+	this->lcd->createChar(0,custom1);
+	this->lcd->createChar(1,custom2);
+	this->lcd->createChar(2,custom3);
+	this->lcd->createChar(3,custom4);
+	this->lcd->createChar(4,custom5);
+	this->lcd->createChar(5,custom6);
+	this->lcd->createChar(6,custom7);
+	this->lcd->createChar(7,block);
 }
 
 // x is column number
 void BigTime::clearDigit(byte x)
 {
-	_lcd->setCursor(x,0);
-	_lcd->print("   ");
-	_lcd->setCursor(x,1); 
-	_lcd->print("   ");
-	_lcd->setCursor(x,2); 
-	_lcd->print("   ");
+	this->lcd->setCursor(x,0);
+	this->lcd->print("   ");
+	this->lcd->setCursor(x,1); 
+	this->lcd->print("   ");
+	this->lcd->setCursor(x,2); 
+	this->lcd->print("   ");
 }
 
 // x is column number
 void BigTime::printColon(byte x)
 {
-	_lcd->setCursor(x,0);
-	_lcd->print("o");
-	_lcd->setCursor(x,1);
-	_lcd->print("o");
+	this->lcd->setCursor(x,0);
+	this->lcd->print("o");
+	this->lcd->setCursor(x,1);
+	this->lcd->print("o");
 }
 
 // n is number to display, x is column number
@@ -136,153 +136,153 @@ void BigTime::printDigit(byte n, byte x)
 	{
 		case 0:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(5));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(7));
-			_lcd->setCursor(x + 2, 1);
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x + 2, 1);
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 1:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(0));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x + 1, 1);
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(2));
-			_lcd->write(byte(2));
-			_lcd->write(byte(2));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(0));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x + 1, 1);
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(2));
 			break;
 		}
 		case 2:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(0));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(5));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(0));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 3:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(0));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x + 1, 1);
-			_lcd->write(byte(2));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(0));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x + 1, 1);
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 4:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(7));
-			_lcd->setCursor(x + 2,0);
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x + 2, 2);
-			_lcd->write(byte(2));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x + 2,0);
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x + 2, 2);
+			this->lcd->write(byte(2));
 			break;
 		}
 		case 5:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(7));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(2));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(7));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 6:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(5));
-			_lcd->write(byte(2));
-			_lcd->write(byte(1));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(7));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(1));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(7));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 7:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x + 1, 1);
-			_lcd->write(byte(5));
-			_lcd->write(byte(3));
-			_lcd->setCursor(x + 1, 2);
-			_lcd->write(byte(2));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x + 1, 1);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(3));
+			this->lcd->setCursor(x + 1, 2);
+			this->lcd->write(byte(2));
 			break;
 		}
 		case 8:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(5));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(7));
-			_lcd->write(byte(2));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(7));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 		case 9:
 		{
-			_lcd->setCursor(x,0);
-			_lcd->write(byte(5));
-			_lcd->write(byte(2));
-			_lcd->write(byte(6));
-			_lcd->setCursor(x, 1);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(7));
-			_lcd->setCursor(x, 2);
-			_lcd->write(byte(4));
-			_lcd->write(byte(2));
-			_lcd->write(byte(3));
+			this->lcd->setCursor(x,0);
+			this->lcd->write(byte(5));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(6));
+			this->lcd->setCursor(x, 1);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(7));
+			this->lcd->setCursor(x, 2);
+			this->lcd->write(byte(4));
+			this->lcd->write(byte(2));
+			this->lcd->write(byte(3));
 			break;
 		}
 	}
