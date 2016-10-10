@@ -5,8 +5,8 @@
 #ifndef BigTime_h
 #define BigTime_h
 
-#include "Arduino.h"
-#include "LiquidCrystal.h"
+#include <Arduino.h>
+#include <LiquidCrystal.h>
 
 class BigTime
 {

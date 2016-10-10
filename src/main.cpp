@@ -2,9 +2,9 @@
  * Chess Clock Hacking.
  */
 
-#include "Arduino.h"
-#include "LiquidCrystal.h"
-#include <BigTime.h>
+#include <Arduino.h>
+#include <LiquidCrystal.h>
+#include "BigTime.h"
 
 LiquidCrystal leftDisplay(6, 7, 2, 3, 4, 5);
 LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
