@@ -1,4 +1,4 @@
-/**
+/*
  * Chess Clock Hacking.
  */
 

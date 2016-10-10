@@ -1,6 +1,6 @@
 /*
-	BigTime.h - Library for printing big numbers to a 20x4 LCD.
-*/
+ * BigTime.h - Library for printing big numbers to a 20x4 LCD.
+ */
 
 #ifndef BigTime_h
 #define BigTime_h
