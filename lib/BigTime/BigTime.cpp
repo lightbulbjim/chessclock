@@ -96,6 +96,7 @@ byte block[8] =
 BigTime::BigTime(LiquidCrystal* lcd)
 {
 	this->lcd = lcd;
+	this->digitWidth = 3;
 
 	// assignes each segment a print number
 	this->lcd->createChar(0,custom1);
@@ -126,10 +127,10 @@ void BigTime::printColon(byte x)
 	this->lcd->print("o");
 }
 
-void BigTime::printDigit(byte column, byte x)
+void BigTime::printDigit(byte digit, byte x)
 {
 	clearDigit(x);
-	switch (column)
+	switch (digit)
 	{
 		case 0:
 		{
@@ -287,5 +288,5 @@ void BigTime::printDigit(byte column, byte x)
 
 void printTime(byte hours, byte minutes, byte seconds)
 {
-
+	
 }
