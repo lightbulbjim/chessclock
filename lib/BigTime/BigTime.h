@@ -18,7 +18,7 @@ class BigTime
 		void printTime(byte hours, byte minutes, byte seconds);
 	private:
 		LiquidCrystal* lcd;
-		int digitWidth;
+		byte digitWidth;
 };
 
 #endif
