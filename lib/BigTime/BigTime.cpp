@@ -93,15 +93,10 @@ byte block[8] =
  B11111
 };
 
-// Creates BigTime object
-// LiquidCrystal* lcd: LiquidCrystal object to use
 BigTime::BigTime(LiquidCrystal* lcd)
 {
 	_lcd = lcd;
-}
 
-void BigTime::begin()
-{
 	// assignes each segment a print number
 	_lcd->createChar(0,custom1);
 	_lcd->createChar(1,custom2);
@@ -113,7 +108,7 @@ void BigTime::begin()
 	_lcd->createChar(7,block);
 }
 
-// x is column of upper left corner for large character
+// x is column number
 void BigTime::clearDigit(byte x)
 {
 	_lcd->setCursor(x,0);
@@ -124,7 +119,7 @@ void BigTime::clearDigit(byte x)
 	_lcd->print("   ");
 }
 
-// x is column of upper left corner for large character
+// x is column number
 void BigTime::printColon(byte x)
 {
 	_lcd->setCursor(x,0);
@@ -133,7 +128,7 @@ void BigTime::printColon(byte x)
 	_lcd->print("o");
 }
 
-// n is number to display, x is column of upper left corner for large character
+// n is number to display, x is column number
 void BigTime::printDigit(byte n, byte x)
 {
 	clearDigit(x);

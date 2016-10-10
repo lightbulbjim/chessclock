@@ -15,7 +15,6 @@ void setup()
 {
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
-	left.begin();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
 }
