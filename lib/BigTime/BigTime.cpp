@@ -108,7 +108,6 @@ BigTime::BigTime(LiquidCrystal* lcd)
 	this->lcd->createChar(7,block);
 }
 
-// x is column number
 void BigTime::clearDigit(byte x)
 {
 	this->lcd->setCursor(x,0);
@@ -119,7 +118,6 @@ void BigTime::clearDigit(byte x)
 	this->lcd->print("   ");
 }
 
-// x is column number
 void BigTime::printColon(byte x)
 {
 	this->lcd->setCursor(x,0);
@@ -128,11 +126,10 @@ void BigTime::printColon(byte x)
 	this->lcd->print("o");
 }
 
-// n is number to display, x is column number
-void BigTime::printDigit(byte n, byte x)
+void BigTime::printDigit(byte column, byte x)
 {
 	clearDigit(x);
-	switch (n)
+	switch (column)
 	{
 		case 0:
 		{
@@ -286,4 +283,9 @@ void BigTime::printDigit(byte n, byte x)
 			break;
 		}
 	}
+}
+
+void printTime(byte hours, byte minutes, byte seconds)
+{
+
 }
