@@ -6,6 +6,8 @@
 #include <LiquidCrystal.h>
 #include "BigTime.h"
 
+static unsigned long now;
+
 LiquidCrystal leftDisplay(6, 7, 2, 3, 4, 5);
 LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
 
@@ -59,5 +61,10 @@ void lcdTest()
 
 void loop()
 {
-	lcdTest();
+	now = millis();
+
+	if (now % 1000 == 0) {
+		leftDisplay.clear();
+		leftDisplay.print(now);
+	}
 }
