@@ -14,14 +14,15 @@ class Clock
 	public:
 		Clock(BigTime* display);
 		void tick(unsigned long nowMilliseconds);
+		void saveTime();
 		byte hours;
 		byte minutes;
 		byte seconds;
-		bool running;
 	private:
-		BigTime* display;
 		unsigned long targetMilliseconds;
 		unsigned long remainingMilliseconds;
+		BigTime* display;
+		bool running;
 };
 
 #endif

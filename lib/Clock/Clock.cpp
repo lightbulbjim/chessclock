@@ -17,11 +17,19 @@ Clock::Clock(BigTime* display)
 }
 
 
+void Clock::saveTime()
+{
+
+}
+
+
 void Clock::tick(unsigned long nowMilliseconds)
 {
-	if (!running) {
+	if (!this->running) {
 		return;
 	}
+
+	unsigned long nowMilliseconds = millis();
 
 	if (nowMilliseconds >= this->targetMilliseconds) {
 		this->remainingMilliseconds = 0;
@@ -31,7 +39,7 @@ void Clock::tick(unsigned long nowMilliseconds)
 
 	// Update hours/minutes/seconds here...
 
-	if (remainingMilliseconds % 1000 == 0) {
+	if (this->remainingMilliseconds % 1000 == 0) {
 		this->display->printTime(this->hours, this->minutes, this->seconds);
 	}
 }

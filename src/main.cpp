@@ -16,8 +16,6 @@ BigTime rightBigTime(&rightDisplay);
 Clock leftClock(&leftBigTime);
 Clock rightClock(&rightBigTime);
 
-static unsigned long now;
-
 
 void setup()
 {
@@ -49,8 +47,6 @@ void clockTest()
 
 void loop()
 {
-	now = millis();
-
-	leftClock.tick(now);
-	rightClock.tick(now);
+	leftClock.tick();
+	rightClock.tick();
 }
