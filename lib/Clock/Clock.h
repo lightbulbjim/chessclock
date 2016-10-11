@@ -21,9 +21,9 @@ class Clock
 		void incHours(int quantity = 1);
 		void incMinutes(int quantity = 1);
 		void incSeconds(int quantity = 1);
-		unsigned int hours;
-		unsigned int minutes;
-		unsigned int seconds;
+		byte hours;
+		byte minutes;
+		byte seconds;
 	private:
 		unsigned long time;  // in milliseconds
 }
