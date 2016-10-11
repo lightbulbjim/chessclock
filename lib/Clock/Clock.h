@@ -13,7 +13,7 @@ class Clock
 {
 	public:
 		Clock(BigTime* display);
-		void tick(unsigned long nowMilliseconds);
+		void tick();
 		void saveTime();
 		void start();
 		void stop();

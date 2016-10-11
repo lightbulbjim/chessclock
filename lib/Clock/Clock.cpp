@@ -27,7 +27,7 @@ void Clock::saveTime()
 
 void Clock::start()
 {
-	now = millis();
+	unsigned long now = millis();
 	this->targetMilliseconds = now + this->remainingMilliseconds;
 	this->running = true;
 }
@@ -39,7 +39,7 @@ void Clock::stop()
 }
 
 
-void Clock::tick(unsigned long nowMilliseconds)
+void Clock::tick()
 {
 	if (!this->running) {
 		return;
