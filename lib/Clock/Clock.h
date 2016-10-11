@@ -7,6 +7,7 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include <BigTime.h>
 
 class Clock
 {
@@ -26,6 +27,6 @@ class Clock
 		byte seconds;
 	private:
 		unsigned long time;  // in milliseconds
-}
+};
 
 #endif
