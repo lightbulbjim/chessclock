@@ -7,7 +7,6 @@
 
 Clock::Clock(BigTime* display)
 {
-//		: display(display) {
 	this->display = display;
 }
 
