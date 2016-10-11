@@ -5,12 +5,16 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 #include "BigTime.h"
+#include "Clock.h"
 
 LiquidCrystal leftDisplay(6, 7, 2, 3, 4, 5);
 LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
 
-BigTime leftClock(&leftDisplay);
-BigTime rightClock(&rightDisplay);
+BigTime leftBigTime(&leftDisplay);
+BigTime rightBigTime(&rightDisplay);
+
+Clock leftClock(leftBigTime);
+Clock rightClock(rightBigTime);
 
 static unsigned long now;
 
@@ -24,6 +28,7 @@ void setup()
 }
 
 
+/*
 void clockTest()
 {
 	byte testTime = 99;
@@ -34,11 +39,15 @@ void clockTest()
 		delay(1000);
 	}
 }
+*/
 
 
 void loop()
 {
 	now = millis();
 
-	clockTest();
+//	clockTest();
+	leftClock.printTestTime();
+	delay(3000);
+	rightClock.printTestTime();
 }

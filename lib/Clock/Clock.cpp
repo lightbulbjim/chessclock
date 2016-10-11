@@ -5,7 +5,15 @@
 #include <Clock.h>
 
 
-Clock::Clock(LiquidCrystal* lcd)
+Clock::Clock(BigTime display)
+		: display(display) {
+}
+
+
+void Clock::printTestTime()
 {
-	this->display = lcd;
+	byte hours = 1;
+	byte minutes = 23;
+	byte seconds = 45;
+	this->display.printTime(hours, minutes, seconds);
 }

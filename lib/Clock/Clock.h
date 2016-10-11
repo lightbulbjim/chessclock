@@ -12,7 +12,7 @@
 class Clock
 {
 	public:
-		Clock(LiquidCrystal*);
+		Clock(BigTime display);
 		void start();
 		void stop();
 		void tick();
@@ -25,8 +25,10 @@ class Clock
 		byte hours;
 		byte minutes;
 		byte seconds;
+		void printTestTime();
 	private:
 		unsigned long time;  // in milliseconds
+		BigTime display;
 };
 
 #endif
