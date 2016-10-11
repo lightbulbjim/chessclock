@@ -25,6 +25,13 @@ void setup()
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
+
+	leftClock.hours = 1;
+	leftClock.minutes = 15;
+	leftClock.seconds = 0;
+	rightClock.hours = 0;
+	rightClock.minutes = 30;
+	rightClock.seconds = 0;
 }
 
 
@@ -44,5 +51,6 @@ void loop()
 {
 	now = millis();
 
-	clockTest();
+	leftClock.tick(now);
+	rightClock.tick(now);
 }
