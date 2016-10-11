@@ -50,8 +50,18 @@ void clockTest()
 }
 
 
+unsigned long loopCounter = 0;
+
 void loop()
 {
 	leftClock.tick();
 	rightClock.tick();
+
+	if (millis() >= 5000) {
+		leftDisplay.setCursor(0,3);
+		leftDisplay.print(loopCounter / 5);
+		leftDisplay.print(" loops/sec");
+	} else {
+		loopCounter++;
+	}
 }
