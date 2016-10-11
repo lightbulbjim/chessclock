@@ -11,7 +11,7 @@
 class BigTime
 {
 	public:
-		BigTime(LiquidCrystal*);
+		BigTime(LiquidCrystal* lcd);
 		void printTime(byte hours, byte minutes, byte seconds);
 	private:
 		LiquidCrystal* lcd;
