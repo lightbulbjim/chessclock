@@ -26,13 +26,10 @@ void setup()
 
 	leftClock.hours = 1;
 	leftClock.minutes = 15;
-	leftClock.seconds = 0;
 	leftClock.saveTime();
 	leftClock.start();
 
-	rightClock.hours = 0;
-	rightClock.minutes = 30;
-	rightClock.seconds = 0;
+	rightClock.seconds = 30;
 	rightClock.saveTime();
 	rightClock.start();
 }

@@ -51,14 +51,14 @@ void Clock::tick()
 		}
 	}
 
-	if (this->remainingMilliseconds % 1000 == 0) {
-		unsigned long remainder;
-		this->hours = this->remainingMilliseconds / 3600000;
-		remainder = this->remainingMilliseconds % 3600000;
-		this->minutes = remainder / 60000;
-		remainder = remainder % 60000;
-		this->seconds = remainder / 1000;
+	unsigned long remainder;
+	this->hours = this->remainingMilliseconds / 3600000;
+	remainder = this->remainingMilliseconds % 3600000;
+	this->minutes = remainder / 60000;
+	remainder = remainder % 60000;
 
+	if (this->seconds != remainder / 1000) {
+		this->seconds = remainder / 1000;
 		this->display->printTime(this->hours, this->minutes, this->seconds);
 	}
 }
