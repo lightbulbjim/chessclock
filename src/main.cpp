@@ -13,8 +13,8 @@ LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
 BigTime leftBigTime(&leftDisplay);
 BigTime rightBigTime(&rightDisplay);
 
-Clock leftClock(leftBigTime);
-Clock rightClock(rightBigTime);
+Clock leftClock(&leftBigTime);
+Clock rightClock(&rightBigTime);
 
 static unsigned long now;
 
@@ -28,26 +28,21 @@ void setup()
 }
 
 
-/*
 void clockTest()
 {
 	byte testTime = 99;
 	while (true) {
-		leftClock.printTime(testTime, testTime, testTime);
-		rightClock.printTime(testTime, testTime, testTime);
+		leftBigTime.printTime(testTime, testTime, testTime);
+		rightBigTime.printTime(testTime, testTime, testTime);
 		testTime--;
 		delay(1000);
 	}
 }
-*/
 
 
 void loop()
 {
 	now = millis();
 
-//	clockTest();
-	leftClock.printTestTime();
-	delay(3000);
-	rightClock.printTestTime();
+	clockTest();
 }

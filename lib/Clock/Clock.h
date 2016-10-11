@@ -12,7 +12,7 @@
 class Clock
 {
 	public:
-		Clock(BigTime display);
+		Clock(BigTime* display);
 		void start();
 		void stop();
 		void tick();
@@ -27,8 +27,8 @@ class Clock
 		byte seconds;
 		void printTestTime();
 	private:
+		BigTime* display;
 		unsigned long time;  // in milliseconds
-		BigTime display;
 };
 
 #endif
