@@ -14,9 +14,6 @@ class Clock
 	public:
 		Clock(BigTime* display);
 		void tick(unsigned long nowMilliseconds);
-		void setHours(byte hours);
-		void setMinutes(byte minutes);
-		void setSeconds(byte seconds);
 		byte hours;
 		byte minutes;
 		byte seconds;
