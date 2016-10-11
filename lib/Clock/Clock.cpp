@@ -19,7 +19,23 @@ Clock::Clock(BigTime* display)
 
 void Clock::saveTime()
 {
+	this->remainingMilliseconds = this->hours * 3600000;
+	this->remainingMilliseconds += this->minutes * 60000;
+	this->remainingMilliseconds += this->seconds * 1000;
+}
 
+
+void Clock::start()
+{
+	now = millis();
+	this->targetMilliseconds = now + this->remainingMilliseconds;
+	this->running = true;
+}
+
+
+void Clock::stop()
+{
+	this->running = false;
 }
 
 
