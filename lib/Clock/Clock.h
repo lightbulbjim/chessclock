@@ -16,19 +16,15 @@ class Clock
 		void start();
 		void stop();
 		void tick();
-		void editHours();
-		void editMinutes();
-		void editSeconds();
-		void incHours(int quantity = 1);
-		void incMinutes(int quantity = 1);
-		void incSeconds(int quantity = 1);
+		void setHours(byte hours);
+		void setMinutes(byte minutes);
+		void setSeconds(byte seconds);
 		byte hours;
 		byte minutes;
 		byte seconds;
-		void printTestTime();
 	private:
 		BigTime* display;
-		unsigned long time;  // in milliseconds
+		unsigned long target_milliseconds;
 };
 
 #endif

@@ -8,13 +8,8 @@
 Clock::Clock(BigTime* display)
 {
 	this->display = display;
+	this->hours = 0;
+	this->minutes = 0;
+	this->seconds = 0;
 }
 
-
-void Clock::printTestTime()
-{
-	byte hours = 1;
-	byte minutes = 23;
-	byte seconds = 45;
-	this->display->printTime(hours, minutes, seconds);
-}
