@@ -13,8 +13,6 @@ class Clock
 {
 	public:
 		Clock(BigTime* display);
-		void start();
-		void stop();
 		void tick(unsigned long nowMilliseconds);
 		void setHours(byte hours);
 		void setMinutes(byte minutes);
@@ -22,6 +20,7 @@ class Clock
 		byte hours;
 		byte minutes;
 		byte seconds;
+		bool running;
 	private:
 		BigTime* display;
 		unsigned long targetMilliseconds;
