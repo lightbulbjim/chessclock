@@ -100,6 +100,10 @@ BigTime::BigTime(LiquidCrystal* lcd)
 	this->lcd = lcd;
 	this->digitWidth = 3;
 
+	for (byte i=0; i<20; i++) {
+		this->digitCache[i] = 255;
+	}
+
 	// assignes each segment a print number
 	this->lcd->createChar(0,custom1);
 	this->lcd->createChar(1,custom2);
@@ -134,6 +138,12 @@ void BigTime::printColon(byte x)
 
 void BigTime::printDigit(byte digit, byte x)
 {
+	if (this->digitCache[x] == digit) {
+		return;
+	}
+
+	this->digitCache[x] = digit;
+
 	clearDigit(x);
 	switch (digit)
 	{
