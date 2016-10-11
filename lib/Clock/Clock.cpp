@@ -13,3 +13,12 @@ Clock::Clock(BigTime* display)
 	this->seconds = 0;
 }
 
+
+void Clock::tick(unsigned long nowMilliseconds)
+{
+	if (nowMilliseconds >= this->targetMilliseconds) {
+		this->remainingMilliseconds = 0;
+	} else {
+		this->remainingMilliseconds = this->targetMilliseconds - nowMilliseconds;
+	}
+}

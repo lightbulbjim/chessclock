@@ -15,7 +15,7 @@ class Clock
 		Clock(BigTime* display);
 		void start();
 		void stop();
-		void tick();
+		void tick(unsigned long nowMilliseconds);
 		void setHours(byte hours);
 		void setMinutes(byte minutes);
 		void setSeconds(byte seconds);
@@ -24,7 +24,8 @@ class Clock
 		byte seconds;
 	private:
 		BigTime* display;
-		unsigned long target_milliseconds;
+		unsigned long targetMilliseconds;
+		unsigned long remainingMilliseconds;
 };
 
 #endif
