@@ -7,6 +7,9 @@
 #include "BigTime.h"
 #include "Clock.h"
 
+const byte LEFT_BUTTON = 0;
+const byte RIGHT_BUTTON = 1;
+
 LiquidCrystal leftDisplay(6, 7, 10, 16, 14, 15);
 LiquidCrystal rightDisplay(6, 8, 10, 16, 14, 15);
 
@@ -19,6 +22,9 @@ Clock rightClock(&rightBigTime);
 
 void setup()
 {
+	pinMode(LEFT_BUTTON, INPUT_PULLUP);
+	pinMode(RIGHT_BUTTON, INPUT_PULLUP);
+
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
@@ -27,11 +33,9 @@ void setup()
 	leftClock.hours = 1;
 	leftClock.minutes = 15;
 	leftClock.saveTime();
-	leftClock.start();
 
 	rightClock.seconds = 30;
 	rightClock.saveTime();
-	rightClock.start();
 }
 
 
@@ -51,6 +55,16 @@ unsigned long loopCounter = 0;
 
 void loop()
 {
+	if (digitalRead(LEFT_BUTTON) == LOW) {
+		leftClock.stop();
+		rightClock.start();
+	}
+
+	if (digitalRead(RIGHT_BUTTON) == LOW) {
+		rightClock.stop();
+		leftClock.start();
+	}
+
 	leftClock.tick();
 	rightClock.tick();
 

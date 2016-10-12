@@ -22,6 +22,7 @@ void Clock::saveTime()
 	this->remainingMilliseconds = this->hours * 3600000;
 	this->remainingMilliseconds += this->minutes * 60000;
 	this->remainingMilliseconds += this->seconds * 1000;
+	this->display->printTime(this->hours, this->minutes, this->seconds);
 }
 
 
