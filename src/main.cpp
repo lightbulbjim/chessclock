@@ -34,7 +34,8 @@ void setup()
 	leftClock.minutes = 15;
 	leftClock.saveTime();
 
-	rightClock.seconds = 30;
+	rightClock.hours = 1;
+	rightClock.minutes = 15;
 	rightClock.saveTime();
 }
 
