@@ -7,8 +7,8 @@
 #include "BigTime.h"
 #include "Clock.h"
 
-LiquidCrystal leftDisplay(6, 7, 2, 3, 4, 5);
-LiquidCrystal rightDisplay(6, 8, 2, 3, 4, 5);
+LiquidCrystal leftDisplay(6, 7, 10, 16, 14, 15);
+LiquidCrystal rightDisplay(6, 8, 10, 16, 14, 15);
 
 BigTime leftBigTime(&leftDisplay);
 BigTime rightBigTime(&rightDisplay);
