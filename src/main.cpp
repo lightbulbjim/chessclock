@@ -17,6 +17,7 @@ const byte COMMON_LCD_D6 = 14;
 const byte COMMON_LCD_D7 = 15;
 const byte LEFT_BUTTON = 0;
 const byte RIGHT_BUTTON = 1;
+const byte PAUSE_BUTTON = 2;
 
 LiquidCrystal leftDisplay(COMMON_LCD_RS, LEFT_LCD_ENABLE, COMMON_LCD_D4,
 		COMMON_LCD_D5, COMMON_LCD_D6, COMMON_LCD_D7);
@@ -34,6 +35,7 @@ void setup()
 {
 	pinMode(LEFT_BUTTON, INPUT_PULLUP);
 	pinMode(RIGHT_BUTTON, INPUT_PULLUP);
+	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
 
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
