@@ -1,5 +1,5 @@
 /*
- * Clock.h - Library for managing the clocks.
+ * Clock.h - Class to represent a countdown clock.
  */
 
 #ifndef Clock_h

@@ -1,5 +1,5 @@
 /*
- * BigTime.cpp - Library for printing big numbers to a 20x4 LCD.
+ * BigTime.cpp - Class for printing large time values to a 20x4 LCD.
  */
 
 #include "BigTime.h"
