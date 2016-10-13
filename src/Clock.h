@@ -20,11 +20,11 @@ class Clock
 		byte hours;
 		byte minutes;
 		byte seconds;
-		unsigned long targetMilliseconds;
-		unsigned long remainingMilliseconds;
 	private:
 		BigTime* display;
 		bool running;
+		unsigned long targetMilliseconds;
+		unsigned long remainingMilliseconds;
 };
 
 #endif
