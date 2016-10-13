@@ -7,11 +7,21 @@
 #include "BigTime.h"
 #include "Clock.h"
 
+// Pin definitions.
+const byte LEFT_LCD_ENABLE = 7;
+const byte RIGHT_LCD_ENABLE = 8;
+const byte COMMON_LCD_RS = 6;
+const byte COMMON_LCD_D4 = 10;
+const byte COMMON_LCD_D5 = 16;
+const byte COMMON_LCD_D6 = 14;
+const byte COMMON_LCD_D7 = 15;
 const byte LEFT_BUTTON = 0;
 const byte RIGHT_BUTTON = 1;
 
-LiquidCrystal leftDisplay(6, 7, 10, 16, 14, 15);
-LiquidCrystal rightDisplay(6, 8, 10, 16, 14, 15);
+LiquidCrystal leftDisplay(COMMON_LCD_RS, LEFT_LCD_ENABLE, COMMON_LCD_D4,
+		COMMON_LCD_D5, COMMON_LCD_D6, COMMON_LCD_D7);
+LiquidCrystal rightDisplay(COMMON_LCD_RS, RIGHT_LCD_ENABLE, COMMON_LCD_D4,
+		COMMON_LCD_D5, COMMON_LCD_D6, COMMON_LCD_D7);
 
 BigTime leftBigTime(&leftDisplay);
 BigTime rightBigTime(&rightDisplay);
