@@ -87,6 +87,12 @@ void loop()
 		leftClock.start();
 	}
 
+	if (pauseButtonPressed) {
+		leftClock.stop();
+		rightClock.stop();
+		pauseButtonPressed = false;
+	}
+
 	leftClock.tick();
 	rightClock.tick();
 
