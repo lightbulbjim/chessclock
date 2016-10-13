@@ -79,18 +79,6 @@ void setup()
 }
 
 
-void clockTest()
-{
-	byte testTime = 99;
-	while (true) {
-		leftBigTime.printTime(testTime, testTime, testTime);
-		rightBigTime.printTime(testTime, testTime, testTime);
-		testTime--;
-		delay(1000);
-	}
-}
-
-
 unsigned long loopCounter = 0;
 
 void loop()
