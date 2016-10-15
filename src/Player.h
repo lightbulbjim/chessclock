@@ -20,6 +20,6 @@ class Player
 		Time secondBonusTime;
 		Time thirdTime;
 		Time thirdBonusTime;
-}
+};
 
 #endif
