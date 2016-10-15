@@ -68,14 +68,6 @@ void setup()
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
-
-	leftClock.hours = 1;
-	leftClock.minutes = 15;
-	leftClock.saveTime();
-
-	rightClock.hours = 1;
-	rightClock.minutes = 15;
-	rightClock.saveTime();
 }
 
 

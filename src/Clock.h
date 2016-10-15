@@ -7,6 +7,7 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include "Time.h"
 #include "BigTime.h"
 
 class Clock
@@ -17,9 +18,7 @@ class Clock
 		void saveTime();
 		void start();
 		void stop();
-		byte hours;
-		byte minutes;
-		byte seconds;
+		Time time;
 	private:
 		BigTime* display;
 		bool running;
