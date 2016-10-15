@@ -1,5 +1,5 @@
 /*
- * Chess Clock Hacking.
+ * Chess Clock.
  */
 
 #include <Arduino.h>
