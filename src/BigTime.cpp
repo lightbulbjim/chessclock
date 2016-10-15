@@ -314,22 +314,22 @@ void BigTime::printValue(byte value, byte x)
 }
 
 
-void BigTime::printTime(byte hours, byte minutes, byte seconds)
+void BigTime::printTime(Time& time)
 {
 	byte x = 0;
 
-	this->printValue(hours, x);
+	this->printValue(time.hours, x);
 	x = x + (this->digitWidth * 2);
 
 	this->printColon(x);
 	x = x + 1;
 
-	this->printValue(minutes, x);
+	this->printValue(time.minutes, x);
 	x = x + (this->digitWidth * 2);
 
 	this->printColon(x);
 	x = x + 1;
 
-	this->printValue(seconds, x);
+	this->printValue(time.seconds, x);
 	x = x + (this->digitWidth * 2);
 }

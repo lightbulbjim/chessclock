@@ -22,7 +22,7 @@ void Clock::saveTime()
 	this->remainingMilliseconds = this->time.hours * 3600000;
 	this->remainingMilliseconds += this->time.minutes * 60000;
 	this->remainingMilliseconds += this->time.seconds * 1000;
-	this->display->printTime(this->time.hours, this->time.minutes, this->time.seconds);
+	this->display->printTime(this->time);
 }
 
 
@@ -60,6 +60,6 @@ void Clock::tick()
 
 	if (this->time.seconds != remainder / 1000) {
 		this->time.seconds = remainder / 1000;
-		this->display->printTime(this->time.hours, this->time.minutes, this->time.seconds);
+		this->display->printTime(this->time);
 	}
 }

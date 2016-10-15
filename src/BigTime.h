@@ -7,12 +7,13 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include "Time.h"
 
 class BigTime
 {
 	public:
 		BigTime(LiquidCrystal* lcd);
-		void printTime(byte hours, byte minutes, byte seconds);
+		void printTime(Time& time);
 	private:
 		LiquidCrystal* lcd;
 		byte digitWidth;
