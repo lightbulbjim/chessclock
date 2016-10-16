@@ -11,10 +11,10 @@
 class Player
 {
 	public:
-		byte currentPhase;
 		GamePhase firstPhase;
 		GamePhase secondPhase;
 		GamePhase thirdPhase;
+		byte phase;
 		unsigned int move;
 };
 

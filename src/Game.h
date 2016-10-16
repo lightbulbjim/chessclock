@@ -14,8 +14,10 @@ class Game
 	public:
 		bool load(byte slot);
 		bool save(byte slot);
+		void tick();
 		Player left;
 		Player right;
+		bool running;
 };
 
 #endif

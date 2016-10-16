@@ -1,5 +1,5 @@
 /*
- * Time.h - Class to represent time.
+ * Time.h - Class to represent a time period.
  */
 
 #ifndef Time_h
@@ -10,9 +10,9 @@
 class Time
 {
 	public:
-		byte hours;
-		byte minutes;
-		byte seconds;
+		byte hours = 0;
+		byte minutes = 0;
+		byte seconds = 0;
 };
 
 #endif
