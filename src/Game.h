@@ -12,9 +12,8 @@
 class Game
 {
 	public:
-		Game();
-		void load(byte slot);
-		void save(byte slot);
+		bool load(byte slot);
+		bool save(byte slot);
 		Player left;
 		Player right;
 };

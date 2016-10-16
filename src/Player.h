@@ -6,20 +6,16 @@
 #define Player_h
 
 #include <Arduino.h>
-#include "Time.h"
+#include "GamePhase.h"
 
 class Player
 {
 	public:
-		Player();
-		byte numberOfPhases;
 		byte currentPhase;
-		Time firstTime;
-		Time firstBonusTime;
-		Time secondTime;
-		Time secondBonusTime;
-		Time thirdTime;
-		Time thirdBonusTime;
+		GamePhase firstPhase;
+		GamePhase secondPhase;
+		GamePhase thirdPhase;
+		unsigned int move;
 };
 
 #endif
