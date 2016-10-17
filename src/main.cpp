@@ -19,9 +19,9 @@ const byte LEFT_BUTTON = 0;
 const byte RIGHT_BUTTON = 1;
 const byte PAUSE_BUTTON = 2;
 
-volatile bool leftButtonPressed = false;
-volatile bool rightButtonPressed = false;
-volatile bool pauseButtonPressed = false;
+volatile bool leftButtonPressed;
+volatile bool rightButtonPressed;
+volatile bool pauseButtonPressed;
 
 LiquidCrystal leftDisplay(COMMON_LCD_RS, LEFT_LCD_ENABLE, COMMON_LCD_D4,
 		COMMON_LCD_D5, COMMON_LCD_D6, COMMON_LCD_D7);
@@ -56,13 +56,16 @@ void pauseButtonISR()
 void setup()
 {
 	pinMode(LEFT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(LEFT_BUTTON), leftButtonISR, LOW);
+	attachInterrupt(digitalPinToInterrupt(LEFT_BUTTON), leftButtonISR, FALLING);
+	leftButtonPressed = false;
 
 	pinMode(RIGHT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonISR, LOW);
+	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonISR, FALLING);
+	rightButtonPressed = false;
 
 	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
 	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonISR, LOW);
+	pauseButtonPressed = false;
 
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
