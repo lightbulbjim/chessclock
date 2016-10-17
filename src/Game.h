@@ -10,6 +10,13 @@
 #include "Time.h"
 #include "Player.h"
 
+
+enum turn_t {
+	left,
+	right
+};
+
+
 class Game
 {
 	public:
@@ -18,6 +25,7 @@ class Game
 		void tick();
 		Player left;
 		Player right;
+		turn_t turn;
 		byte slot;
 		bool running;
 	private:

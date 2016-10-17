@@ -115,3 +115,11 @@ void Game::save(byte slot)
 		element++;
 	}
 }
+
+
+void Game::tick()
+{
+	if (!this->running) {
+		return;
+	}
+}

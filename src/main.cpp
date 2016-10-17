@@ -218,14 +218,7 @@ void setup()
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
 
-	printGameData();
-	delay(600000);
-
 	setupTestTimes();
-
-	rightDisplay.setCursor(0,3);
-	rightDisplay.print("EEPROM length: ");
-	rightDisplay.print(EEPROM.length());
 }
 
 
@@ -234,20 +227,17 @@ unsigned long loopCounter = 0;
 void loop()
 {
 	if (leftButtonPressed) {
-		leftClock.stop();
-		rightClock.start();
+		game.turn = right;
 		leftButtonPressed = false;
 	}
 
 	if (rightButtonPressed) {
-		rightClock.stop();
-		leftClock.start();
+		game.turn = left;
 		rightButtonPressed = false;
 	}
 
 	if (pauseButtonPressed) {
-		leftClock.stop();
-		rightClock.stop();
+		game.running = !game.running;
 		pauseButtonPressed = false;
 	}
 
