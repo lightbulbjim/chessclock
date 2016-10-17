@@ -7,10 +7,12 @@
 
 #include <Arduino.h>
 #include "GamePhase.h"
+#include "Clock.h"
 
 class Player
 {
 	public:
+		Clock* clock;
 		GamePhase firstPhase;
 		GamePhase secondPhase;
 		GamePhase thirdPhase;

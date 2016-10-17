@@ -4,7 +4,6 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
-#include <EEPROM.h>
 #include "BigTime.h"
 #include "Clock.h"
 #include "Game.h"
@@ -217,6 +216,9 @@ void setup()
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
+
+	game.left.clock = &leftClock;
+	game.right.clock = &rightClock;
 
 	setupTestTimes();
 }
