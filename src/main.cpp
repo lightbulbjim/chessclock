@@ -92,9 +92,10 @@ void printGameData()
 	leftDisplay.print(game.left.firstPhase.delayTime.seconds);
 	leftDisplay.print(" ");
 	leftDisplay.print(game.left.firstPhase.delayType);
-	leftDisplay.print(") :");
+	leftDisplay.print(") ");
 	leftDisplay.print(game.left.firstPhase.moveLimit);
 	leftDisplay.print(" ");
+	leftDisplay.print(game.left.firstPhase.enabled);
 
 	leftDisplay.setCursor(0,1);
 	leftDisplay.print(game.left.secondPhase.time.hours);
@@ -110,9 +111,10 @@ void printGameData()
 	leftDisplay.print(game.left.secondPhase.delayTime.seconds);
 	leftDisplay.print(" ");
 	leftDisplay.print(game.left.secondPhase.delayType);
-	leftDisplay.print(") :");
+	leftDisplay.print(") ");
 	leftDisplay.print(game.left.secondPhase.moveLimit);
 	leftDisplay.print(" ");
+	leftDisplay.print(game.left.secondPhase.enabled);
 
 	leftDisplay.setCursor(0,2);
 	leftDisplay.print(game.left.thirdPhase.time.hours);
@@ -128,9 +130,10 @@ void printGameData()
 	leftDisplay.print(game.left.thirdPhase.delayTime.seconds);
 	leftDisplay.print(" ");
 	leftDisplay.print(game.left.thirdPhase.delayType);
-	leftDisplay.print(") :");
+	leftDisplay.print(") ");
 	leftDisplay.print(game.left.thirdPhase.moveLimit);
 	leftDisplay.print(" ");
+	leftDisplay.print(game.left.thirdPhase.enabled);
 
 	rightDisplay.setCursor(0,0);
 	rightDisplay.print(game.right.firstPhase.time.hours);
@@ -146,9 +149,10 @@ void printGameData()
 	rightDisplay.print(game.right.firstPhase.delayTime.seconds);
 	rightDisplay.print(" ");
 	rightDisplay.print(game.right.firstPhase.delayType);
-	rightDisplay.print(") :");
+	rightDisplay.print(") ");
 	rightDisplay.print(game.right.firstPhase.moveLimit);
 	rightDisplay.print(" ");
+	rightDisplay.print(game.right.firstPhase.enabled);
 
 	rightDisplay.setCursor(0,1);
 	rightDisplay.print(game.right.secondPhase.time.hours);
@@ -164,9 +168,10 @@ void printGameData()
 	rightDisplay.print(game.right.secondPhase.delayTime.seconds);
 	rightDisplay.print(" ");
 	rightDisplay.print(game.right.secondPhase.delayType);
-	rightDisplay.print(") :");
+	rightDisplay.print(") ");
 	rightDisplay.print(game.right.secondPhase.moveLimit);
 	rightDisplay.print(" ");
+	rightDisplay.print(game.right.secondPhase.enabled);
 
 	rightDisplay.setCursor(0,2);
 	rightDisplay.print(game.right.thirdPhase.time.hours);
@@ -182,9 +187,10 @@ void printGameData()
 	rightDisplay.print(game.right.thirdPhase.delayTime.seconds);
 	rightDisplay.print(" ");
 	rightDisplay.print(game.right.thirdPhase.delayType);
-	rightDisplay.print(") :");
+	rightDisplay.print(") ");
 	rightDisplay.print(game.right.thirdPhase.moveLimit);
 	rightDisplay.print(" ");
+	rightDisplay.print(game.right.thirdPhase.enabled);
 
 }
 
