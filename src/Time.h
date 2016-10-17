@@ -13,6 +13,7 @@ class Time
 		byte hours = 0;
 		byte minutes = 0;
 		byte seconds = 0;
+		bool greaterThanZero();
 };
 
 #endif
