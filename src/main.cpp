@@ -4,6 +4,7 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include <EEPROM.h>
 #include "BigTime.h"
 #include "Clock.h"
 #include "Game.h"
@@ -96,6 +97,10 @@ void setup()
 	rightDisplay.clear();
 
 	setupTestTimes();
+
+	rightDisplay.setCursor(0,3);
+	rightDisplay.print("EEPROM length: ");
+	rightDisplay.print(EEPROM.length());
 }
 
 

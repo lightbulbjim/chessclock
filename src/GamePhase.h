@@ -15,6 +15,7 @@ class GamePhase
 		Time time;
 		Time delayTime;
 		enum delay {
+			none,
 			fischer,
 			bronstein,
 			us

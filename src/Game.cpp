@@ -58,6 +58,12 @@ byte dummySavedGame[48] =
 };
 
 
+int Game::slotToAddress(byte slot)
+{
+	return int((slot - 1) * 48);
+}
+
+
 bool Game::load(byte slot)
 {
 	this->left.firstPhase.enabled = true;
@@ -84,7 +90,15 @@ bool Game::load(byte slot)
 }
 
 
-bool Game::save(byte slot)
+void Game::save(byte slot)
 {
-	return true;
+	int address = slotToAddress(slot);
+	int element = 0;
+
+	while (address < slotToAddress(slot + 1))
+	{
+		EEPROM.update(address, dummySavedGame[element]);
+		address++;
+		element++;
+	}
 }

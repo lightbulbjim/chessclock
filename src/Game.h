@@ -6,6 +6,7 @@
 #define Game_h
 
 #include <Arduino.h>
+#include <EEPROM.h>
 #include "Time.h"
 #include "Player.h"
 
@@ -13,11 +14,13 @@ class Game
 {
 	public:
 		bool load(byte slot);
-		bool save(byte slot);
+		void save(byte slot);
 		void tick();
 		Player left;
 		Player right;
 		bool running;
+	private:
+		int slotToAddress(byte slot);
 };
 
 #endif
