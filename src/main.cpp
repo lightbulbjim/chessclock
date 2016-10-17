@@ -58,6 +58,20 @@ void pauseButtonHandler()
 }
 
 
+void setupTestTimes()
+{
+	leftClock.time.hours = 1;
+	leftClock.time.minutes = 15;
+	leftClock.time.seconds = 0;
+	leftClock.saveTime();
+
+	rightClock.time.hours = 1;
+	rightClock.time.minutes = 15;
+	rightClock.time.seconds = 0;
+	rightClock.saveTime();
+}
+
+
 void setup()
 {
 	pinMode(LEFT_BUTTON, INPUT_PULLUP);
@@ -80,6 +94,8 @@ void setup()
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
+
+	setupTestTimes();
 }
 
 
