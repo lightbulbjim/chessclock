@@ -19,7 +19,7 @@ class GamePhase
 			bronstein,
 			us
 		} delayType;
-		unsigned int moveLimit;
+		byte moveLimit;
 };
 
 #endif
