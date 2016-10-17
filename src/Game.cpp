@@ -64,29 +64,86 @@ int Game::slotToAddress(byte slot)
 }
 
 
-bool Game::load(byte slot)
+void Game::load(byte slot)
 {
+	int address = slotToAddress(slot);
+
+	GamePhase* phases[6] = {
+		&left.firstPhase,
+		&left.secondPhase,
+		&left.thirdPhase,
+		&right.firstPhase,
+		&right.secondPhase,
+		&right.thirdPhase
+	};
+
+
+	this->left.firstPhase.time.hours          = EEPROM.read(address);
+	this->left.firstPhase.time.minutes        = EEPROM.read(address + 1);
+	this->left.firstPhase.time.seconds        = EEPROM.read(address + 2);
+	this->left.firstPhase.delayTime.hours     = EEPROM.read(address + 3);
+	this->left.firstPhase.delayTime.minutes   = EEPROM.read(address + 4);
+	this->left.firstPhase.delayTime.seconds   = EEPROM.read(address + 5);
+	this->left.firstPhase.delayType = (GamePhase::delay) EEPROM.read(address + 6);
+	this->left.firstPhase.moveLimit           = EEPROM.read(address + 7);
+	this->left.secondPhase.time.hours         = EEPROM.read(address + 8);
+	this->left.secondPhase.time.minutes       = EEPROM.read(address + 9);
+	this->left.secondPhase.time.seconds       = EEPROM.read(address + 10);
+	this->left.secondPhase.delayTime.hours    = EEPROM.read(address + 11);
+	this->left.secondPhase.delayTime.minutes  = EEPROM.read(address + 12);
+	this->left.secondPhase.delayTime.seconds  = EEPROM.read(address + 13);
+	this->left.secondPhase.delayType = (GamePhase::delay) EEPROM.read(address + 14);
+	this->left.secondPhase.moveLimit          = EEPROM.read(address + 15);
+	this->left.thirdPhase.time.hours          = EEPROM.read(address + 16);
+	this->left.thirdPhase.time.minutes        = EEPROM.read(address + 17);
+	this->left.thirdPhase.time.seconds        = EEPROM.read(address + 18);
+	this->left.thirdPhase.delayTime.hours     = EEPROM.read(address + 19);
+	this->left.thirdPhase.delayTime.minutes   = EEPROM.read(address + 20);
+	this->left.thirdPhase.delayTime.seconds   = EEPROM.read(address + 21);
+	this->left.thirdPhase.delayType = (GamePhase::delay) EEPROM.read(address + 22);
+	this->left.thirdPhase.moveLimit           = EEPROM.read(address + 23);
+	this->right.firstPhase.time.hours         = EEPROM.read(address + 24);
+	this->right.firstPhase.time.minutes       = EEPROM.read(address + 25);
+	this->right.firstPhase.time.seconds       = EEPROM.read(address + 26);
+	this->right.firstPhase.delayTime.hours    = EEPROM.read(address + 27);
+	this->right.firstPhase.delayTime.minutes  = EEPROM.read(address + 28);
+	this->right.firstPhase.delayTime.seconds  = EEPROM.read(address + 29);
+	this->right.firstPhase.delayType = (GamePhase::delay) EEPROM.read(address + 30);
+	this->right.firstPhase.moveLimit          = EEPROM.read(address + 31);
+	this->right.secondPhase.time.hours        = EEPROM.read(address + 32);
+	this->right.secondPhase.time.minutes      = EEPROM.read(address + 33);
+	this->right.secondPhase.time.seconds      = EEPROM.read(address + 34);
+	this->right.secondPhase.delayTime.hours   = EEPROM.read(address + 35);
+	this->right.secondPhase.delayTime.minutes = EEPROM.read(address + 36);
+	this->right.secondPhase.delayTime.seconds = EEPROM.read(address + 37);
+	this->right.secondPhase.delayType = (GamePhase::delay) EEPROM.read(address + 38);
+	this->right.secondPhase.moveLimit         = EEPROM.read(address + 39);
+	this->right.thirdPhase.time.hours         = EEPROM.read(address + 40);
+	this->right.thirdPhase.time.minutes       = EEPROM.read(address + 41);
+	this->right.thirdPhase.time.seconds       = EEPROM.read(address + 42);
+	this->right.thirdPhase.delayTime.hours    = EEPROM.read(address + 43);
+	this->right.thirdPhase.delayTime.minutes  = EEPROM.read(address + 44);
+	this->right.thirdPhase.delayTime.seconds  = EEPROM.read(address + 45);
+	this->right.thirdPhase.delayType = (GamePhase::delay) EEPROM.read(address + 46);
+	this->right.thirdPhase.moveLimit          = EEPROM.read(address + 47);
+
+
 	this->left.firstPhase.enabled = true;
-	this->left.firstPhase.time.hours = 1;
-	this->left.firstPhase.time.minutes = 15;
-	this->left.firstPhase.time.seconds = 0;
-	this->left.secondPhase.enabled = false;
-	this->left.thirdPhase.enabled = false;
+	this->left.secondPhase.enabled = this->left.secondPhase.time.greaterThanZero();
+	this->left.thirdPhase.enabled = this->left.thirdPhase.time.greaterThanZero();
 	this->left.phase = 1;
 	this->left.move = 0;
 
 	this->right.firstPhase.enabled = true;
-	this->right.firstPhase.time.hours = 1;
-	this->right.firstPhase.time.minutes = 15;
-	this->right.firstPhase.time.seconds = 0;
+	this->right.secondPhase.enabled = this->right.secondPhase.time.greaterThanZero();
+	this->right.thirdPhase.enabled = this->right.thirdPhase.time.greaterThanZero();
 	this->right.secondPhase.enabled = false;
 	this->right.thirdPhase.enabled = false;
 	this->right.phase = 1;
 	this->right.move = 0;
 
+	this->slot = slot;
 	this->running = false;
-
-	return true;
 }
 
 

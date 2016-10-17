@@ -13,11 +13,12 @@
 class Game
 {
 	public:
-		bool load(byte slot);
+		void load(byte slot);
 		void save(byte slot);
 		void tick();
 		Player left;
 		Player right;
+		byte slot;
 		bool running;
 	private:
 		int slotToAddress(byte slot);
