@@ -18,7 +18,9 @@ const byte COMMON_LCD_D6 = 14;
 const byte COMMON_LCD_D7 = 15;
 const byte LEFT_BUTTON = 0;
 const byte RIGHT_BUTTON = 1;
-const byte PAUSE_BUTTON = 2;
+const byte DEC_BUTTON = 2;
+const byte PAUSE_BUTTON = 3;
+const byte INC_BUTTON = 4;
 
 volatile bool leftButtonPressed;
 volatile bool rightButtonPressed;
@@ -66,9 +68,13 @@ void setup()
 	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonHandler, FALLING);
 	rightButtonPressed = false;
 
+	pinMode(DEC_BUTTON, INPUT_PULLUP);
+
 	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
 	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonHandler, LOW);
 	pauseButtonPressed = false;
+
+	pinMode(INC_BUTTON, INPUT_PULLUP);
 
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
