@@ -6,6 +6,7 @@
 #include <LiquidCrystal.h>
 #include "BigTime.h"
 #include "Clock.h"
+#include "Game.h"
 
 // Pin definitions.
 const byte LEFT_LCD_ENABLE = 7;
@@ -34,20 +35,22 @@ BigTime rightBigTime(&rightDisplay);
 Clock leftClock(&leftBigTime);
 Clock rightClock(&rightBigTime);
 
+Game game;
 
-void leftButtonISR()
+
+void leftButtonHandler()
 {
 	leftButtonPressed = true;
 }
 
 
-void rightButtonISR()
+void rightButtonHandler()
 {
 	rightButtonPressed = true;
 }
 
 
-void pauseButtonISR()
+void pauseButtonHandler()
 {
 	pauseButtonPressed = true;
 }
@@ -56,15 +59,15 @@ void pauseButtonISR()
 void setup()
 {
 	pinMode(LEFT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(LEFT_BUTTON), leftButtonISR, FALLING);
+	attachInterrupt(digitalPinToInterrupt(LEFT_BUTTON), leftButtonHandler, FALLING);
 	leftButtonPressed = false;
 
 	pinMode(RIGHT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonISR, FALLING);
+	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonHandler, FALLING);
 	rightButtonPressed = false;
 
 	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonISR, LOW);
+	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonHandler, LOW);
 	pauseButtonPressed = false;
 
 	leftDisplay.begin(20,4);
