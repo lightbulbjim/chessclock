@@ -73,6 +73,122 @@ void setupTestTimes()
 }
 
 
+void printGameData()
+{
+	game.save(1);
+	game.load(1);
+
+	leftDisplay.setCursor(0,0);
+	leftDisplay.print(game.left.firstPhase.time.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.firstPhase.time.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.firstPhase.time.seconds);
+	leftDisplay.print(" (");
+	leftDisplay.print(game.left.firstPhase.delayTime.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.firstPhase.delayTime.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.firstPhase.delayTime.seconds);
+	leftDisplay.print(" ");
+	leftDisplay.print(game.left.firstPhase.delayType);
+	leftDisplay.print(") :");
+	leftDisplay.print(game.left.firstPhase.moveLimit);
+	leftDisplay.print(" ");
+
+	leftDisplay.setCursor(0,1);
+	leftDisplay.print(game.left.secondPhase.time.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.secondPhase.time.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.secondPhase.time.seconds);
+	leftDisplay.print(" (");
+	leftDisplay.print(game.left.secondPhase.delayTime.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.secondPhase.delayTime.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.secondPhase.delayTime.seconds);
+	leftDisplay.print(" ");
+	leftDisplay.print(game.left.secondPhase.delayType);
+	leftDisplay.print(") :");
+	leftDisplay.print(game.left.secondPhase.moveLimit);
+	leftDisplay.print(" ");
+
+	leftDisplay.setCursor(0,2);
+	leftDisplay.print(game.left.thirdPhase.time.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.thirdPhase.time.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.thirdPhase.time.seconds);
+	leftDisplay.print(" (");
+	leftDisplay.print(game.left.thirdPhase.delayTime.hours);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.thirdPhase.delayTime.minutes);
+	leftDisplay.print("/");
+	leftDisplay.print(game.left.thirdPhase.delayTime.seconds);
+	leftDisplay.print(" ");
+	leftDisplay.print(game.left.thirdPhase.delayType);
+	leftDisplay.print(") :");
+	leftDisplay.print(game.left.thirdPhase.moveLimit);
+	leftDisplay.print(" ");
+
+	rightDisplay.setCursor(0,0);
+	rightDisplay.print(game.right.firstPhase.time.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.firstPhase.time.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.firstPhase.time.seconds);
+	rightDisplay.print(" (");
+	rightDisplay.print(game.right.firstPhase.delayTime.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.firstPhase.delayTime.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.firstPhase.delayTime.seconds);
+	rightDisplay.print(" ");
+	rightDisplay.print(game.right.firstPhase.delayType);
+	rightDisplay.print(") :");
+	rightDisplay.print(game.right.firstPhase.moveLimit);
+	rightDisplay.print(" ");
+
+	rightDisplay.setCursor(0,1);
+	rightDisplay.print(game.right.secondPhase.time.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.secondPhase.time.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.secondPhase.time.seconds);
+	rightDisplay.print(" (");
+	rightDisplay.print(game.right.secondPhase.delayTime.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.secondPhase.delayTime.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.secondPhase.delayTime.seconds);
+	rightDisplay.print(" ");
+	rightDisplay.print(game.right.secondPhase.delayType);
+	rightDisplay.print(") :");
+	rightDisplay.print(game.right.secondPhase.moveLimit);
+	rightDisplay.print(" ");
+
+	rightDisplay.setCursor(0,2);
+	rightDisplay.print(game.right.thirdPhase.time.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.thirdPhase.time.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.thirdPhase.time.seconds);
+	rightDisplay.print(" (");
+	rightDisplay.print(game.right.thirdPhase.delayTime.hours);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.thirdPhase.delayTime.minutes);
+	rightDisplay.print("/");
+	rightDisplay.print(game.right.thirdPhase.delayTime.seconds);
+	rightDisplay.print(" ");
+	rightDisplay.print(game.right.thirdPhase.delayType);
+	rightDisplay.print(") :");
+	rightDisplay.print(game.right.thirdPhase.moveLimit);
+	rightDisplay.print(" ");
+
+}
+
+
 void setup()
 {
 	pinMode(LEFT_BUTTON, INPUT_PULLUP);
@@ -95,6 +211,9 @@ void setup()
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
 	rightDisplay.clear();
+
+	printGameData();
+	delay(600000);
 
 	setupTestTimes();
 
