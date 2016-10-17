@@ -19,9 +19,9 @@ Clock::Clock(BigTime* display)
 
 void Clock::saveTime()
 {
-	this->remainingMilliseconds = this->time.hours * 3600000;
-	this->remainingMilliseconds += this->time.minutes * 60000;
-	this->remainingMilliseconds += this->time.seconds * 1000;
+	this->remainingMilliseconds = (unsigned long) this->time.hours * 3600000;
+	this->remainingMilliseconds += (unsigned long) this->time.minutes * 60000;
+	this->remainingMilliseconds += (unsigned long) this->time.seconds * 1000;
 	this->display->printTime(this->time);
 }
 
