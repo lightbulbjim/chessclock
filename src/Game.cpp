@@ -77,7 +77,6 @@ void Game::clear()
 
 	for (int i=0; i<=5; i++) {
 		phases[i]->enabled = (i <= 1);
-		phases[i]->disabled = (i > 1);
 		phases[i]->time.hours = 0;
 		phases[i]->time.minutes = 0;
 		phases[i]->time.seconds = 0;
@@ -90,9 +89,11 @@ void Game::clear()
 
 	this->left.phase = 1;
 	this->left.move = 0;
+	this->left.flagged = false;
 
 	this->right.phase = 1;
 	this->right.move = 0;
+	this->right.flagged = false;
 
 	this->turn = LEFT;
 	this->running = false;

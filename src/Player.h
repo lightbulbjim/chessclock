@@ -18,6 +18,7 @@ class Player
 		GamePhase thirdPhase;
 		byte phase;
 		unsigned int move;
+		bool flagged;
 };
 
 #endif
