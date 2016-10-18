@@ -8,6 +8,7 @@
 #include <Arduino.h>
 #include "Game.h"
 
+extern const byte SLOTS;
 extern Game game;
 
 #endif
