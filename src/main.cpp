@@ -4,6 +4,7 @@
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
+#include "global.h"
 #include "BigTime.h"
 #include "Clock.h"
 #include "Game.h"
