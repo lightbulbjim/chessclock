@@ -149,7 +149,7 @@ void resetToFactory()
 	game.right.firstPhase.delayType = FISCHER;
 	game.save(slot++);
 
-	// 1h 30m/30s + 30m/30s Fischer tournament
+	// 1h 30m/30s + 30m/30s Fischer tournament (FIDE)
 	game.clear();
 	game.left.firstPhase.time.hours = 1;
 	game.left.firstPhase.time.minutes = 30;
@@ -181,7 +181,7 @@ void resetToFactory()
 	game.right.firstPhase.delayType = BRONSTEIN;
 	game.save(slot++);
 
-	// 1h 55m/5s Bronstein rapid
+	// 1h 55m/5s Bronstein standard
 	game.clear();
 	game.left.firstPhase.time.hours = 1;
 	game.left.firstPhase.time.minutes = 55;
