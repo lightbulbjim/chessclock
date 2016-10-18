@@ -213,5 +213,9 @@ void resetToFactory()
 	game.right.secondPhase.delayType = BRONSTEIN;
 	game.save(slot++);
 
+	game.clear();
+	while (slot <= SLOTS) {
+		game.save(slot++);
+	}
 }
 
