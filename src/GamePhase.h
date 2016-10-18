@@ -8,7 +8,6 @@
 #include <Arduino.h>
 #include "Time.h"
 
-
 enum Delay {
 	NONE,
 	FISCHER,
