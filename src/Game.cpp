@@ -68,15 +68,16 @@ void Game::clear()
 {
 	GamePhase* phases[6] = {
 		&this->left.firstPhase,
-		&this->left.secondPhase,
-		&this->left.thirdPhase,
 		&this->right.firstPhase,
+		&this->left.secondPhase,
 		&this->right.secondPhase,
+		&this->left.thirdPhase,
 		&this->right.thirdPhase
 	};
 
 	for (int i=0; i<=5; i++) {
-		phases[i]->enabled = false;
+		phases[i]->enabled = (i <= 1);
+		phases[i]->disabled = (i > 1);
 		phases[i]->time.hours = 0;
 		phases[i]->time.minutes = 0;
 		phases[i]->time.seconds = 0;
