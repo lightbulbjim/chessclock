@@ -8,18 +8,22 @@
 #include <Arduino.h>
 #include "Time.h"
 
+
+enum Delay {
+	NONE,
+	FISCHER,
+	BRONSTEIN,
+	US
+};
+
+
 class GamePhase
 {
 	public:
 		bool enabled;
 		Time time;
 		Time delayTime;
-		enum delay {
-			none,
-			fischer,
-			bronstein,
-			us
-		} delayType;
+		Delay delayType;
 		byte moveLimit;
 };
 
