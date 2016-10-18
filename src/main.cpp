@@ -91,12 +91,12 @@ unsigned long loopCounter = 0;
 void loop()
 {
 	if (leftButtonPressed) {
-		game.turn = right;
+		game.turn = RIGHT;
 		leftButtonPressed = false;
 	}
 
 	if (rightButtonPressed) {
-		game.turn = left;
+		game.turn = LEFT;
 		rightButtonPressed = false;
 	}
 

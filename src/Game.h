@@ -10,22 +10,22 @@
 #include "Time.h"
 #include "Player.h"
 
-
-enum turn_t {
-	left,
-	right
+enum Turn { 
+	LEFT,
+	RIGHT
 };
 
 
 class Game
 {
 	public:
+		void clear();
 		void load(byte slot);
 		void save(byte slot);
 		void tick();
 		Player left;
 		Player right;
-		turn_t turn;
+		Turn turn;
 		byte slot;
 		bool running;
 	private:
