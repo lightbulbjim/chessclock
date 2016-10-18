@@ -64,6 +64,40 @@ int Game::slotToAddress(byte slot)
 }
 
 
+void Game::clear()
+{
+	GamePhase* phases[6] = {
+		&this->left.firstPhase,
+		&this->left.secondPhase,
+		&this->left.thirdPhase,
+		&this->right.firstPhase,
+		&this->right.secondPhase,
+		&this->right.thirdPhase
+	};
+
+	for (int i=0; i<=5; i++) {
+		phases[i]->enabled = false;
+		phases[i]->time.hours = 0;
+		phases[i]->time.minutes = 0;
+		phases[i]->time.seconds = 0;
+		phases[i]->delayTime.hours = 0;
+		phases[i]->delayTime.minutes = 0;
+		phases[i]->delayTime.seconds = 0;
+		phases[i]->delayType = NONE;
+		phases[i]->moveLimit = 0;
+	}
+
+	this->left.phase = 1;
+	this->left.move = 0;
+
+	this->right.phase = 1;
+	this->right.move = 0;
+
+	this->turn = LEFT;
+	this->running = false;
+}
+
+
 void Game::load(byte slot)
 {
 	int address = slotToAddress(slot);
@@ -84,7 +118,7 @@ void Game::load(byte slot)
 		phases[i]->delayTime.hours     = EEPROM.read(address + 3);
 		phases[i]->delayTime.minutes   = EEPROM.read(address + 4);
 		phases[i]->delayTime.seconds   = EEPROM.read(address + 5);
-		phases[i]->delayType = (GamePhase::delay) EEPROM.read(address + 6);
+		phases[i]->delayType   = (Delay) EEPROM.read(address + 6);
 		phases[i]->moveLimit           = EEPROM.read(address + 7);
 
 		phases[i]->enabled = phases[i]->time.greaterThanZero();
