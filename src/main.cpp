@@ -97,12 +97,20 @@ void setup()
 void loop()
 {
 	if (leftButtonPressed) {
-		game.endTurn(&game.left);
+		if (game.isRunning()) {
+			game.endTurn(&game.left);
+		} else {
+			game.activePlayer = &game.right;
+		}
 		leftButtonPressed = false;
 	}
 
 	if (rightButtonPressed) {
-		game.endTurn(&game.right);
+		if (game.isRunning()) {
+			game.endTurn(&game.right);
+		} else {
+			game.activePlayer = &game.left;
+		}
 		rightButtonPressed = false;
 	}
 
