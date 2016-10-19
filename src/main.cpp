@@ -76,7 +76,7 @@ void setup()
 	pinMode(DEC_BUTTON, INPUT_PULLUP);
 
 	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonHandler, LOW);
+	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonHandler, FALLING);
 	pauseButtonPressed = false;
 
 	pinMode(INC_BUTTON, INPUT_PULLUP);
@@ -120,6 +120,7 @@ void loop()
 		} else {
 			game.unPause();
 		}
+		delay(200);
 		pauseButtonPressed = false;
 	}
 
