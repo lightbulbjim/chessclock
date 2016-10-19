@@ -107,8 +107,11 @@ void loop()
 	}
 
 	if (pauseButtonPressed) {
-		leftClock.stop();
-		rightClock.stop();
+		if (game.isRunning()) {
+			game.pause();
+		} else {
+			game.unPause();
+		}
 		pauseButtonPressed = false;
 	}
 

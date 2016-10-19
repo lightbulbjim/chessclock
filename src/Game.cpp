@@ -111,6 +111,12 @@ void Game::reset()
 }
 
 
+bool Game::isRunning()
+{
+	return this->running;
+}
+
+
 void Game::endTurn(Player* player)
 {
 	if (player != this->activePlayer) {
@@ -126,6 +132,25 @@ void Game::endTurn(Player* player)
 	}
 
 	this->activePlayer->clock->start();
+}
+
+
+void Game::pause()
+{
+	if (this->running) {
+		this->left.clock->stop();
+		this->right.clock->stop();
+		this->running = false;
+	}
+}
+
+
+void Game::unPause()
+{
+	if (!this->running) {
+		this->activePlayer->clock->start();
+		this->running = true;
+	}
 }
 
 

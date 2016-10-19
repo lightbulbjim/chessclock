@@ -18,7 +18,10 @@ class Game
 		void load(byte slot);
 		void save(byte slot);
 		void reset();
+		bool isRunning();
 		void endTurn(Player* player);
+		void pause();
+		void unPause();
 		void tick();
 		GamePhase firstPhase;
 		GamePhase secondPhase;
@@ -27,9 +30,9 @@ class Game
 		Player right;
 		Player* activePlayer;
 		byte slot;
-		bool running;
 	private:
 		int slotToAddress(byte slot);
+		bool running;
 };
 
 #endif
