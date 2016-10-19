@@ -13,9 +13,6 @@ class Player
 {
 	public:
 		Clock* clock;
-		GamePhase firstPhase;
-		GamePhase secondPhase;
-		GamePhase thirdPhase;
 		byte phase;
 		unsigned int move;
 		bool flagged;

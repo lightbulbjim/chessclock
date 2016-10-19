@@ -7,7 +7,7 @@
 
 #include <Arduino.h>
 #include <EEPROM.h>
-#include "Time.h"
+#include "GamePhase.h"
 #include "Player.h"
 
 enum Turn { 
@@ -23,6 +23,9 @@ class Game
 		void load(byte slot);
 		void save(byte slot);
 		void tick();
+		GamePhase firstPhase;
+		GamePhase secondPhase;
+		GamePhase thirdPhase;
 		Player left;
 		Player right;
 		Turn turn;

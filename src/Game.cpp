@@ -13,16 +13,13 @@ int Game::slotToAddress(byte slot)
 
 void Game::clear()
 {
-	GamePhase* phases[6] = {
-		&this->left.firstPhase,
-		&this->right.firstPhase,
-		&this->left.secondPhase,
-		&this->right.secondPhase,
-		&this->left.thirdPhase,
-		&this->right.thirdPhase
+	GamePhase* phases[3] = {
+		&this->firstPhase,
+		&this->secondPhase,
+		&this->thirdPhase,
 	};
 
-	for (int i=0; i<=5; i++) {
+	for (int i=0; i<=2; i++) {
 		phases[i]->enabled = (i <= 1);
 		phases[i]->time.hours = 0;
 		phases[i]->time.minutes = 0;
@@ -51,16 +48,13 @@ void Game::load(byte slot)
 {
 	int address = slotToAddress(slot);
 
-	GamePhase* phases[6] = {
-		&this->left.firstPhase,
-		&this->left.secondPhase,
-		&this->left.thirdPhase,
-		&this->right.firstPhase,
-		&this->right.secondPhase,
-		&this->right.thirdPhase
+	GamePhase* phases[3] = {
+		&this->firstPhase,
+		&this->secondPhase,
+		&this->thirdPhase,
 	};
 
-	for (int i=0; i<=5; i++) {
+	for (int i=0; i<=2; i++) {
 		phases[i]->time.hours          = EEPROM.read(address);
 		phases[i]->time.minutes        = EEPROM.read(address + 1);
 		phases[i]->time.seconds        = EEPROM.read(address + 2);
@@ -90,16 +84,13 @@ void Game::save(byte slot)
 {
 	int address = slotToAddress(slot);
 
-	GamePhase* phases[6] = {
-		&this->left.firstPhase,
-		&this->left.secondPhase,
-		&this->left.thirdPhase,
-		&this->right.firstPhase,
-		&this->right.secondPhase,
-		&this->right.thirdPhase
+	GamePhase* phases[3] = {
+		&this->firstPhase,
+		&this->secondPhase,
+		&this->thirdPhase,
 	};
 
-	for (int i=0; i<=5; i++) {
+	for (int i=0; i<=2; i++) {
 		EEPROM.update(address, phases[i]->time.hours);
 		EEPROM.update(address + 1, phases[i]->time.minutes);
 		EEPROM.update(address + 2, phases[i]->time.seconds);
