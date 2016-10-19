@@ -97,14 +97,12 @@ void setup()
 void loop()
 {
 	if (leftButtonPressed) {
-		leftClock.stop();
-		rightClock.start();
+		game.endTurn(&game.left);
 		leftButtonPressed = false;
 	}
 
 	if (rightButtonPressed) {
-		rightClock.stop();
-		leftClock.start();
+		game.endTurn(&game.right);
 		rightButtonPressed = false;
 	}
 

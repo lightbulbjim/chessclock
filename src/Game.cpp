@@ -93,7 +93,7 @@ void Game::save(byte slot)
 void Game::reset()
 {
 	this->running = false;
-	this->turn = LEFT;
+	this->activePlayer = &this->left;
 
 	Player* players[2] = {
 		&this->left,
@@ -111,9 +111,25 @@ void Game::reset()
 }
 
 
-void Game::tick()
+void Game::endTurn(Player* player)
 {
-	if (!this->running) {
+	if (player != this->activePlayer) {
 		return;
 	}
+	
+	this->activePlayer->clock->stop();
+
+	if (player == &this->left) {
+		this->activePlayer = &this->right;
+	} else if (player == &this->right) { 
+		this->activePlayer = &this->left;
+	}
+
+	this->activePlayer->clock->start();
+}
+
+
+void Game::tick()
+{
+	this->activePlayer->clock->tick();
 }

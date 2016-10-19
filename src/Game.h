@@ -10,11 +10,6 @@
 #include "GamePhase.h"
 #include "Player.h"
 
-enum Turn { 
-	LEFT,
-	RIGHT
-};
-
 
 class Game
 {
@@ -23,13 +18,14 @@ class Game
 		void load(byte slot);
 		void save(byte slot);
 		void reset();
+		void endTurn(Player* player);
 		void tick();
 		GamePhase firstPhase;
 		GamePhase secondPhase;
 		GamePhase thirdPhase;
 		Player left;
 		Player right;
-		Turn turn;
+		Player* activePlayer;
 		byte slot;
 		bool running;
 	private:
