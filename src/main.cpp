@@ -112,6 +112,5 @@ void loop()
 		pauseButtonPressed = false;
 	}
 
-	leftClock.tick();
-	rightClock.tick();
+	game.tick();
 }
