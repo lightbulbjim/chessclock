@@ -94,33 +94,26 @@ void setup()
 }
 
 
-unsigned long loopCounter = 0;
-
 void loop()
 {
 	if (leftButtonPressed) {
-		game.turn = RIGHT;
+		leftClock.stop();
+		rightClock.start();
 		leftButtonPressed = false;
 	}
 
 	if (rightButtonPressed) {
-		game.turn = LEFT;
+		rightClock.stop();
+		leftClock.start();
 		rightButtonPressed = false;
 	}
 
 	if (pauseButtonPressed) {
-		game.running = !game.running;
+		leftClock.stop();
+		rightClock.stop();
 		pauseButtonPressed = false;
 	}
 
 	leftClock.tick();
 	rightClock.tick();
-
-	if (millis() >= 5000) {
-		leftDisplay.setCursor(0,3);
-		leftDisplay.print(loopCounter / 5);
-		leftDisplay.print(" loops/sec");
-	} else {
-		loopCounter++;
-	}
 }
