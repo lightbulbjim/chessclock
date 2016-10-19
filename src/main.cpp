@@ -27,6 +27,9 @@ const byte INC_BUTTON = 4;
 // Number of memory slots.
 const byte SLOTS = 40;
 
+// Long press time in ms.
+const unsigned long LONG_PRESS = 3000;
+
 volatile bool leftButtonPressed;
 volatile bool rightButtonPressed;
 volatile bool pauseButtonPressed;
@@ -115,13 +118,22 @@ void loop()
 	}
 
 	if (pauseButtonPressed) {
-		if (game.isRunning()) {
-			game.pause();
-		} else {
-			game.unPause();
+		unsigned long startTime = millis();
+
+		while (pauseButtonPressed) {
+			delay(100);
+			if ((millis() - startTime >= LONG_PRESS) && !game.isRunning()) {
+				game.reset();
+				pauseButtonPressed = false;
+			} else if (digitalRead(PAUSE_BUTTON) == HIGH) {
+				if (game.isRunning()) {
+					game.pause();
+				} else {
+					game.unPause();
+				}
+				pauseButtonPressed = false;
+			}
 		}
-		delay(200);
-		pauseButtonPressed = false;
 	}
 
 	game.tick();
