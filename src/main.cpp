@@ -90,6 +90,7 @@ void setup()
 	game.right.clock = &rightClock;
 
 	resetToFactory();
+	game.load(1);
 }
 
 
