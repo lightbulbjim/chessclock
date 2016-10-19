@@ -8,6 +8,7 @@
 #include "BigTime.h"
 #include "Clock.h"
 #include "Game.h"
+#include "factoryDefaults.h"
 
 // Pin definitions.
 const byte LEFT_LCD_ENABLE = 7;
@@ -87,6 +88,8 @@ void setup()
 
 	game.left.clock = &leftClock;
 	game.right.clock = &rightClock;
+
+	resetToFactory();
 }
 
 
