@@ -24,7 +24,7 @@ const byte PAUSE_BUTTON = 3;
 const byte INC_BUTTON = 4;
 
 // Number of memory slots.
-const byte SLOTS = 20;
+const byte SLOTS = 40;
 
 volatile bool leftButtonPressed;
 volatile bool rightButtonPressed;

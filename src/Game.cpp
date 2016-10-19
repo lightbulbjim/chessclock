@@ -7,7 +7,7 @@
 
 int Game::slotToAddress(byte slot)
 {
-	return int((slot - 1) * 48);
+	return int((slot - 1) * 24);
 }
 
 
