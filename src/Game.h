@@ -22,6 +22,7 @@ class Game
 		void clear();
 		void load(byte slot);
 		void save(byte slot);
+		void reset();
 		void tick();
 		GamePhase firstPhase;
 		GamePhase secondPhase;

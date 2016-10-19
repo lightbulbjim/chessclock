@@ -16,7 +16,7 @@ void Game::clear()
 	GamePhase* phases[3] = {
 		&this->firstPhase,
 		&this->secondPhase,
-		&this->thirdPhase,
+		&this->thirdPhase
 	};
 
 	for (int i=0; i<=2; i++) {
@@ -31,16 +31,7 @@ void Game::clear()
 		phases[i]->moveLimit = 0;
 	}
 
-	this->left.phase = 1;
-	this->left.move = 0;
-	this->left.flagged = false;
-
-	this->right.phase = 1;
-	this->right.move = 0;
-	this->right.flagged = false;
-
-	this->turn = LEFT;
-	this->running = false;
+	this->reset();
 }
 
 
@@ -51,7 +42,7 @@ void Game::load(byte slot)
 	GamePhase* phases[3] = {
 		&this->firstPhase,
 		&this->secondPhase,
-		&this->thirdPhase,
+		&this->thirdPhase
 	};
 
 	for (int i=0; i<=2; i++) {
@@ -69,14 +60,8 @@ void Game::load(byte slot)
 		address += 8;
 	}
 
-	this->left.phase = 1;
-	this->left.move = 0;
-
-	this->right.phase = 1;
-	this->right.move = 0;
-
 	this->slot = slot;
-	this->running = false;
+	this->reset();
 }
 
 
@@ -87,7 +72,7 @@ void Game::save(byte slot)
 	GamePhase* phases[3] = {
 		&this->firstPhase,
 		&this->secondPhase,
-		&this->thirdPhase,
+		&this->thirdPhase
 	};
 
 	for (int i=0; i<=2; i++) {
@@ -101,6 +86,27 @@ void Game::save(byte slot)
 		EEPROM.update(address + 7, phases[i]->moveLimit);
 
 		address += 8;
+	}
+}
+
+
+void Game::reset()
+{
+	this->running = false;
+	this->turn = LEFT;
+
+	Player* players[2] = {
+		&this->left,
+		&this->right
+	};
+
+	for (int i=0; i<=1; i++) {
+		players[i]->clock->stop();
+		players[i]->clock->time = this->firstPhase.time;
+		players[i]->clock->saveTime();
+		players[i]->phase = 1;
+		players[i]->move = 0;
+		players[i]->flagged = false;
 	}
 }
 
