@@ -92,6 +92,9 @@ void setup()
 	game.left.clock = &leftClock;
 	game.right.clock = &rightClock;
 
+	game.left.lcd = &leftDisplay;
+	game.right.lcd = &rightDisplay;
+
 	resetToFactory();
 	game.load(1);
 }
