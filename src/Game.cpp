@@ -107,6 +107,9 @@ void Game::reset()
 		players[i]->phase = 1;
 		players[i]->moves = 0;
 		players[i]->flagged = false;
+
+		players[i]->lcd->setCursor(10, 3);
+		players[i]->lcd->print("Moves: 0  ");
 	}
 }
 
@@ -124,6 +127,10 @@ void Game::endTurn(Player* player)
 	}
 	
 	this->activePlayer->moves++;
+	this->activePlayer->lcd->setCursor(17, 3);
+	this->activePlayer->lcd->print("   ");
+	this->activePlayer->lcd->setCursor(17, 3);
+	this->activePlayer->lcd->print(this->activePlayer->moves);
 	this->activePlayer->clock->stop();
 
 	if (player == &this->left) {
