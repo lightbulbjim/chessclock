@@ -111,6 +111,7 @@ void Game::reset()
 		players[i]->lcd->setCursor(0, 3);
 		players[i]->lcd->print("PAUSED    Moves: 0  ");
 	}
+	this->pause();
 }
 
 
