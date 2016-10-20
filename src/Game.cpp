@@ -108,8 +108,8 @@ void Game::reset()
 		players[i]->moves = 0;
 		players[i]->flagged = false;
 
-		players[i]->lcd->setCursor(10, 3);
-		players[i]->lcd->print("Moves: 0  ");
+		players[i]->lcd->setCursor(0, 3);
+		players[i]->lcd->print("PAUSED    Moves: 0  ");
 	}
 }
 
@@ -146,6 +146,11 @@ void Game::endTurn(Player* player)
 void Game::pause()
 {
 	if (this->running) {
+		this->left.lcd->setCursor(0, 3);
+		this->left.lcd->print("PAUSED");
+		this->right.lcd->setCursor(0, 3);
+		this->right.lcd->print("PAUSED");
+
 		this->left.clock->stop();
 		this->right.clock->stop();
 		this->running = false;
@@ -156,6 +161,11 @@ void Game::pause()
 void Game::unPause()
 {
 	if (!this->running) {
+		this->left.lcd->setCursor(0, 3);
+		this->left.lcd->print("      ");
+		this->right.lcd->setCursor(0, 3);
+		this->right.lcd->print("      ");
+
 		this->activePlayer->clock->start();
 		this->running = true;
 	}
