@@ -105,7 +105,7 @@ void Game::reset()
 		players[i]->clock->time = this->firstPhase.time;
 		players[i]->clock->saveTime();
 		players[i]->phase = 1;
-		players[i]->move = 0;
+		players[i]->moves = 0;
 		players[i]->flagged = false;
 	}
 }
@@ -123,6 +123,7 @@ void Game::endTurn(Player* player)
 		return;
 	}
 	
+	this->activePlayer->moves++;
 	this->activePlayer->clock->stop();
 
 	if (player == &this->left) {

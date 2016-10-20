@@ -16,7 +16,7 @@ class Player
 		Clock* clock;
 		LiquidCrystal* lcd;
 		byte phase;
-		unsigned int move;
+		unsigned int moves;
 		bool flagged;
 };
 
