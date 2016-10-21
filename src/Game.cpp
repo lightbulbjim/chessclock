@@ -163,6 +163,13 @@ void Game::printStatus(Player* player)
 {
 	char status[21] = "                    ";
 
+	if (!this->running) {
+		strcpy(&status[0], "PAUSED");
+	}
+
+	strcat(&status[10], "Moves:");
+	sprintf(&status[17], "%d", player->moves);
+
 	for (int i=0; i<20; i++) {
 		if (status[i] != player->statusCache[i]) {
 
