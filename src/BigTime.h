@@ -17,7 +17,7 @@ class BigTime
 	private:
 		LiquidCrystal* lcd;
 		byte digitWidth;
-		byte digitCache [20];
+		byte digitCache[20];
 		void clearDigit(byte x);
 		void printColon(byte x);
 		void printDigit(byte digit, byte x);

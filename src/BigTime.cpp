@@ -7,91 +7,98 @@
 
 byte custom1[8] = 
 {
- B00011,
- B00111,
- B01111,
- B11111,
- B00000,
- B00000,
- B00000,
- B00000
+	B00011,
+	B00111,
+	B01111,
+	B11111,
+	B00000,
+	B00000,
+	B00000,
+	B00000
 };
+
 byte custom2[8] =
 {
- B11000,
- B11100,
- B11110,
- B11111,
- B00000,
- B00000,
- B00000,
- B00000
+	B11000,
+	B11100,
+	B11110,
+	B11111,
+	B00000,
+	B00000,
+	B00000,
+	B00000
 };
+
 byte custom3[8] =
 {
- B11111,
- B11111,
- B11111,
- B11111,
- B00000,
- B00000,
- B00000,
- B00000
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B00000,
+	B00000,
+	B00000,
+	B00000
 };
+
 byte custom4[8] =
 {
- B11111,
- B11110,
- B11100,
- B11000,
- B00000,
- B00000,
- B00000,
- B00000
+	B11111,
+	B11110,
+	B11100,
+	B11000,
+	B00000,
+	B00000,
+	B00000,
+	B00000
 };
+
 byte custom5[8] =
 {
- B11111,
- B01111,
- B00111,
- B00011,
- B00000,
- B00000,
- B00000,
- B00000
+	B11111,
+	B01111,
+	B00111,
+	B00011,
+	B00000,
+	B00000,
+	B00000,
+	B00000
 };
+
 byte custom6[8] =
 {
- B00011,
- B00111,
- B01111,
- B11111,
- B11111,
- B11111,
- B11111,
- B11111
+	B00011,
+	B00111,
+	B01111,
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111
 };
+
 byte custom7[8] =
 {
- B11000,
- B11100,
- B11110,
- B11111,
- B11111,
- B11111,
- B11111,
- B11111
+	B11000,
+	B11100,
+	B11110,
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111
 };
+
 byte block[8] =
 {
- B11111,
- B11111,
- B11111,
- B11111,
- B11111,
- B11111,
- B11111,
- B11111
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111,
+	B11111
 };
 
 
@@ -104,34 +111,33 @@ BigTime::BigTime(LiquidCrystal* lcd)
 		this->digitCache[i] = 255;
 	}
 
-	// assignes each segment a print number
-	this->lcd->createChar(0,custom1);
-	this->lcd->createChar(1,custom2);
-	this->lcd->createChar(2,custom3);
-	this->lcd->createChar(3,custom4);
-	this->lcd->createChar(4,custom5);
-	this->lcd->createChar(5,custom6);
-	this->lcd->createChar(6,custom7);
-	this->lcd->createChar(7,block);
+	this->lcd->createChar(0, custom1);
+	this->lcd->createChar(1, custom2);
+	this->lcd->createChar(2, custom3);
+	this->lcd->createChar(3, custom4);
+	this->lcd->createChar(4, custom5);
+	this->lcd->createChar(5, custom6);
+	this->lcd->createChar(6, custom7);
+	this->lcd->createChar(7, block);
 }
 
 
 void BigTime::clearDigit(byte x)
 {
-	this->lcd->setCursor(x,0);
+	this->lcd->setCursor(x, 0);
 	this->lcd->print(F("   "));
-	this->lcd->setCursor(x,1); 
+	this->lcd->setCursor(x, 1); 
 	this->lcd->print(F("   "));
-	this->lcd->setCursor(x,2); 
+	this->lcd->setCursor(x, 2); 
 	this->lcd->print(F("   "));
 }
 
 
 void BigTime::printColon(byte x)
 {
-	this->lcd->setCursor(x,0);
+	this->lcd->setCursor(x, 0);
 	this->lcd->print("o");
-	this->lcd->setCursor(x,1);
+	this->lcd->setCursor(x, 1);
 	this->lcd->print("o");
 }
 
@@ -149,7 +155,7 @@ void BigTime::printDigit(byte digit, byte x)
 	{
 		case 0:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(5));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(6));
@@ -165,7 +171,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 1:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(0));
 			this->lcd->write(byte(7));
 			this->lcd->setCursor(x + 1, 1);
@@ -194,7 +200,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 3:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(0));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(6));
@@ -209,9 +215,9 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 4:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(7));
-			this->lcd->setCursor(x + 2,0);
+			this->lcd->setCursor(x + 2, 0);
 			this->lcd->write(byte(7));
 			this->lcd->setCursor(x, 1);
 			this->lcd->write(byte(4));
@@ -223,7 +229,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 5:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(7));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(3));
@@ -239,7 +245,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 6:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(5));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(1));
@@ -255,7 +261,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 7:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(4));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(7));
@@ -268,7 +274,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 8:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(5));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(6));
@@ -284,7 +290,7 @@ void BigTime::printDigit(byte digit, byte x)
 		}
 		case 9:
 		{
-			this->lcd->setCursor(x,0);
+			this->lcd->setCursor(x, 0);
 			this->lcd->write(byte(5));
 			this->lcd->write(byte(2));
 			this->lcd->write(byte(6));
@@ -319,17 +325,17 @@ void BigTime::printTime(Time& time)
 	byte x = 0;
 
 	this->printValue(time.hours, x);
-	x = x + (this->digitWidth * 2);
+	x += (this->digitWidth * 2);
 
 	this->printColon(x);
-	x = x + 1;
+	x += 1;
 
 	this->printValue(time.minutes, x);
-	x = x + (this->digitWidth * 2);
+	x += (this->digitWidth * 2);
 
 	this->printColon(x);
-	x = x + 1;
+	x += 1;
 
 	this->printValue(time.seconds, x);
-	x = x + (this->digitWidth * 2);
+	x += (this->digitWidth * 2);
 }
