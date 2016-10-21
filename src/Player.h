@@ -18,6 +18,7 @@ class Player
 		byte phase;
 		unsigned int moves;
 		bool flagged;
+		char statusCache[20];
 };
 
 #endif

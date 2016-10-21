@@ -140,4 +140,13 @@ void loop()
 	}
 
 	game.tick();
+
+//	static unsigned long loopCounter = 0;
+//	if (millis() >= 5000) {
+//		leftDisplay.setCursor(0,0);
+//		leftDisplay.print(loopCounter / 5);
+//		leftDisplay.print(" loops/sec");
+//	} else {
+//		loopCounter++;
+//	}
 }

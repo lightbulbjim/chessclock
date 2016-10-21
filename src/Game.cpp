@@ -109,7 +109,7 @@ void Game::reset()
 		players[i]->flagged = false;
 
 		players[i]->lcd->setCursor(0, 3);
-		players[i]->lcd->print("PAUSED    Moves: 0  ");
+		players[i]->lcd->print("                    ");
 	}
 	this->pause();
 }
@@ -128,10 +128,6 @@ void Game::endTurn(Player* player)
 	}
 	
 	this->activePlayer->moves++;
-	this->activePlayer->lcd->setCursor(17, 3);
-	this->activePlayer->lcd->print("   ");
-	this->activePlayer->lcd->setCursor(17, 3);
-	this->activePlayer->lcd->print(this->activePlayer->moves);
 	this->activePlayer->clock->stop();
 
 	if (player == &this->left) {
@@ -147,11 +143,6 @@ void Game::endTurn(Player* player)
 void Game::pause()
 {
 	if (this->running) {
-		this->left.lcd->setCursor(0, 3);
-		this->left.lcd->print("PAUSED");
-		this->right.lcd->setCursor(0, 3);
-		this->right.lcd->print("PAUSED");
-
 		this->left.clock->stop();
 		this->right.clock->stop();
 		this->running = false;
@@ -162,18 +153,30 @@ void Game::pause()
 void Game::unPause()
 {
 	if (!this->running) {
-		this->left.lcd->setCursor(0, 3);
-		this->left.lcd->print("      ");
-		this->right.lcd->setCursor(0, 3);
-		this->right.lcd->print("      ");
-
 		this->activePlayer->clock->start();
 		this->running = true;
 	}
 }
 
 
+void Game::printStatus(Player* player)
+{
+	char status[21] = "                    ";
+
+	for (int i=0; i<20; i++) {
+		if (status[i] != player->statusCache[i]) {
+
+			player->lcd->setCursor(i, 3);
+			player->lcd->print(status[i]);
+			player->statusCache[i] = status[i];
+		}
+	}
+}
+
+
 void Game::tick()
 {
+	this->printStatus(&this->left);
+	this->printStatus(&this->right);
 	this->activePlayer->clock->tick();
 }
