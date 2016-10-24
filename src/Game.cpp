@@ -55,7 +55,7 @@ void Game::load(byte slot)
 		phases[i]->delayType   = (Delay) EEPROM.read(address + 6);
 		phases[i]->moveLimit           = EEPROM.read(address + 7);
 
-		phases[i]->enabled = phases[i]->time.greaterThanZero();
+		phases[i]->enabled = !phases[i]->time.isZero();
 
 		address += 8;
 	}
