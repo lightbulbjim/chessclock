@@ -107,13 +107,10 @@ void Game::reset()
 		players[i]->phase = 1;
 		players[i]->moves = 0;
 		players[i]->flagged = false;
-
-		players[i]->lcd->setCursor(0, 3);
-		players[i]->lcd->print("                    ");
-
-		this->printMoves(players[i]);
 	}
+
 	this->pause();
+	this->printStatus();
 }
 
 
@@ -129,9 +126,9 @@ void Game::endTurn(Player* player)
 		return;
 	}
 	
-	this->activePlayer->moves++;
-	this->printMoves(this->activePlayer);
 	this->activePlayer->clock->stop();
+	this->activePlayer->moves++;
+	this->printStatus();
 
 	if (player == &this->left) {
 		this->activePlayer = &this->right;
@@ -149,6 +146,7 @@ void Game::pause()
 		this->left.clock->stop();
 		this->right.clock->stop();
 		this->running = false;
+		this->printStatus();
 	}
 }
 
@@ -158,16 +156,33 @@ void Game::unPause()
 	if (!this->running) {
 		this->activePlayer->clock->start();
 		this->running = true;
+		this->printStatus();
 	}
 }
 
 
-void Game::printMoves(Player* player)
+void Game::printStatus()
 {
-	player->lcd->setCursor(10, 3);
-	player->lcd->print("Moves:    ");
-	player->lcd->setCursor(17, 3);
-	player->lcd->print(player->moves);
+	Player* players[2] = {
+		&this->left,
+		&this->right
+	};
+
+	for (int i=0; i<=1; i++) {
+		players[i]->lcd->setCursor(0, 3);
+		players[i]->lcd->print("                    ");
+		players[i]->lcd->setCursor(0, 3);
+
+		if (this->running) {
+			players[i]->lcd->print("          ");
+		} else {
+			players[i]->lcd->print("PAUSED    ");
+		}
+
+		players[i]->lcd->print("Moves:    ");
+		players[i]->lcd->setCursor(17, 3);
+		players[i]->lcd->print(players[i]->moves);
+	}
 }
 
 

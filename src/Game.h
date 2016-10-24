@@ -32,7 +32,7 @@ class Game
 		byte slot;
 	private:
 		int slotToAddress(byte slot);
-		void printMoves(Player* player);
+		void printStatus();
 		bool running;
 };
 
