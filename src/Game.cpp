@@ -140,6 +140,16 @@ void Game::endTurn(Player* player)
 }
 
 
+void Game::endPhase(Player* player)
+{
+	if (player->phase == &this->firstPhase) {
+		player->phase = &this->secondPhase;
+	} else if (player->phase == &this->secondPhase) {
+		player->phase = &this->thirdPhase;
+	}
+}
+
+
 void Game::pause()
 {
 	if (this->running) {

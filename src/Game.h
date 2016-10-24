@@ -20,6 +20,7 @@ class Game
 		void reset();
 		bool isRunning();
 		void endTurn(Player* player);
+		void endPhase(Player* player);
 		void pause();
 		void unPause();
 		void tick();
