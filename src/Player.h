@@ -15,7 +15,7 @@ class Player
 	public:
 		Clock* clock;
 		LiquidCrystal* lcd;
-		byte phase;
+		GamePhase* phase;
 		unsigned int moves;
 		bool flagged;
 		char statusCache[20];

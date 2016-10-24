@@ -104,7 +104,7 @@ void Game::reset()
 		players[i]->clock->stop();
 		players[i]->clock->time = this->firstPhase.time;
 		players[i]->clock->saveTime();
-		players[i]->phase = 1;
+		players[i]->phase = &this->firstPhase;
 		players[i]->moves = 0;
 		players[i]->flagged = false;
 	}
