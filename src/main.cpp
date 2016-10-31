@@ -6,6 +6,7 @@
 #include <LiquidCrystal.h>
 #include "global.h"
 #include "BigTime.h"
+#include "Button.h"
 #include "Clock.h"
 #include "Game.h"
 #include "factoryDefaults.h"
@@ -18,21 +19,14 @@ const byte COMMON_LCD_D4 = 10;
 const byte COMMON_LCD_D5 = 16;
 const byte COMMON_LCD_D6 = 14;
 const byte COMMON_LCD_D7 = 15;
-const byte LEFT_BUTTON = 0;
-const byte RIGHT_BUTTON = 1;
-const byte DEC_BUTTON = 2;
-const byte PAUSE_BUTTON = 3;
-const byte INC_BUTTON = 4;
+Button leftButton(0);
+Button rightButton(1);
+Button decButton(2);
+Button pauseButton(3);
+Button incButton(4);
 
 // Number of memory slots.
 const byte SLOTS = 40;
-
-// Long press time in ms.
-const unsigned long LONG_PRESS = 3000;
-
-volatile bool leftButtonPressed;
-volatile bool rightButtonPressed;
-volatile bool pauseButtonPressed;
 
 LiquidCrystal leftDisplay(COMMON_LCD_RS, LEFT_LCD_ENABLE, COMMON_LCD_D4,
 		COMMON_LCD_D5, COMMON_LCD_D6, COMMON_LCD_D7);
@@ -50,40 +44,36 @@ Game game;
 
 void leftButtonHandler()
 {
-	leftButtonPressed = true;
+	leftButton.press();
 }
 
 
 void rightButtonHandler()
 {
-	rightButtonPressed = true;
+	rightButton.press();
+}
+
+
+void decButtonHandler()
+{
+	decButton.press();
 }
 
 
 void pauseButtonHandler()
 {
-	pauseButtonPressed = true;
+	pauseButton.press();
+}
+
+
+void incButtonHandler()
+{
+	incButton.press();
 }
 
 
 void setup()
 {
-	pinMode(LEFT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(LEFT_BUTTON), leftButtonHandler, FALLING);
-	leftButtonPressed = false;
-
-	pinMode(RIGHT_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(RIGHT_BUTTON), rightButtonHandler, FALLING);
-	rightButtonPressed = false;
-
-	pinMode(DEC_BUTTON, INPUT_PULLUP);
-
-	pinMode(PAUSE_BUTTON, INPUT_PULLUP);
-	attachInterrupt(digitalPinToInterrupt(PAUSE_BUTTON), pauseButtonHandler, FALLING);
-	pauseButtonPressed = false;
-
-	pinMode(INC_BUTTON, INPUT_PULLUP);
-
 	leftDisplay.begin(20,4);
 	leftDisplay.clear();
 	rightDisplay.begin(20,4);
@@ -95,6 +85,12 @@ void setup()
 	game.left.lcd = &leftDisplay;
 	game.right.lcd = &rightDisplay;
 
+	leftButton.setIsr(leftButtonHandler);
+	rightButton.setIsr(rightButtonHandler);
+	decButton.setIsr(decButtonHandler);
+	pauseButton.setIsr(pauseButtonHandler);
+	incButton.setIsr(incButtonHandler);
+
 	resetToFactory();
 	game.load(1);
 }
@@ -102,40 +98,31 @@ void setup()
 
 void loop()
 {
-	if (leftButtonPressed) {
+	if (leftButton.shortPressed()) {
 		if (game.isRunning()) {
 			game.endTurn(&game.left);
 		} else {
 			game.activePlayer = &game.right;
 		}
-		leftButtonPressed = false;
 	}
 
-	if (rightButtonPressed) {
+	if (rightButton.shortPressed()) {
 		if (game.isRunning()) {
 			game.endTurn(&game.right);
 		} else {
 			game.activePlayer = &game.left;
 		}
-		rightButtonPressed = false;
 	}
 
-	if (pauseButtonPressed) {
-		unsigned long startTime = millis();
-
-		while (pauseButtonPressed) {
-			delay(100);
-			if ((millis() - startTime >= LONG_PRESS) && !game.isRunning()) {
-				game.reset();
-				pauseButtonPressed = false;
-			} else if (digitalRead(PAUSE_BUTTON) == HIGH) {
-				if (game.isRunning()) {
-					game.pause();
-				} else {
-					game.unPause();
-				}
-				pauseButtonPressed = false;
-			}
+	if (pauseButton.longPressed()) {
+		if (!game.isRunning()) {
+			game.reset();
+		}
+	} else if (pauseButton.shortPressed()) {
+		if (game.isRunning()) {
+			game.pause();
+		} else {
+			game.unPause();
 		}
 	}
 
