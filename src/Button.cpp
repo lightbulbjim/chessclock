@@ -21,8 +21,10 @@ void Button::setIsr(void (*isr)())
 
 void Button::press()
 {
-	this->startTime = millis();
-	this->pressed = true;
+	if (this->pressed == false) {
+		this->startTime = millis();
+		this->pressed = true;
+	}
 }
 
 
