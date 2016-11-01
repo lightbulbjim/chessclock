@@ -41,7 +41,7 @@ bool Button::detectPress(unsigned long time)
 
 bool Button::shortPressed()
 {
-	return detectPress(100);
+	return detectPress(200);
 }
 
 
