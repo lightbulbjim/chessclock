@@ -29,7 +29,10 @@ void Button::press()
 bool Button::detectPress(unsigned long time)
 {
 	if (this->pressed) {
-		return (millis() - this->startTime > time);
+		if (millis() - this->startTime > time) {
+			this->pressed = false;
+			return true;
+		}
 	} else {
 		return false;
 	}
