@@ -16,10 +16,12 @@ class Button
 		bool shortPressed();
 		bool longPressed();
 	private:
-		bool detectPress(unsigned long time);
+		bool currentlyPressed();
+		unsigned long getPressedTime();
 		byte pin;
-		volatile bool pressed;
+		volatile bool pressTriggered;
 		unsigned long startTime;
+		unsigned long pressedTime;
 };
 
 #endif

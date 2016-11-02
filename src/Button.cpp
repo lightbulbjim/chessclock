@@ -8,7 +8,9 @@
 Button::Button(byte pin)
 {
 	this->pin = pin;
-	this->pressed = false;
+	this->pressTriggered = false;
+	this->startTime = 0;
+	this->pressedTime = 0;
 	pinMode(this->pin, INPUT_PULLUP);
 }
 
@@ -21,33 +23,46 @@ void Button::setIsr(void (*isr)())
 
 void Button::press()
 {
-	if (this->pressed == false) {
+	if (this->pressTriggered == false) {
 		this->startTime = millis();
-		this->pressed = true;
+		this->pressTriggered = true;
 	}
 }
 
 
-bool Button::detectPress(unsigned long time)
+unsigned long Button::getPressedTime()
 {
-	if (this->pressed) {
-		if (millis() - this->startTime > time) {
-			this->pressed = false;
-			return true;
-		}
-	} else {
-		return false;
+	if (this->pressTriggered) {
+		this->pressedTime = millis() - this->startTime;
 	}
+	return this->pressedTime;
+}
+
+
+bool Button::currentlyPressed()
+{
+	return (digitalRead(this->pin) == LOW);
 }
 
 
 bool Button::shortPressed()
 {
-	return detectPress(200);
+	if (this->pressTriggered && !this->currentlyPressed()) {
+		if (this->getPressedTime() > 200 && this->getPressedTime() < 3000) {
+			this->pressTriggered = false;
+			return true;
+		}
+	}
+	return false;
 }
 
 
 bool Button::longPressed()
 {
-	return detectPress(3000);
+	if (this->pressTriggered && this->currentlyPressed()) {
+		if (this->getPressedTime() >= 3000) {
+			this->pressTriggered = false;
+			return true;
+		}
+	}
 }
