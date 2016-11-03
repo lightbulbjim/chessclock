@@ -32,7 +32,7 @@ void Button::press()
 
 unsigned long Button::getPressedTime()
 {
-	if (this->pressTriggered) {
+	if (this->currentlyPressed()) {
 		this->pressedTime = millis() - this->startTime;
 	}
 	return this->pressedTime;
