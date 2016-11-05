@@ -87,7 +87,7 @@ void setup()
 
 void loop()
 {
-	if (digitalRead(ROCKER_LEFT) == LOW) {
+	if (game.activePlayer == &game.left && digitalRead(ROCKER_LEFT) == LOW) {
 		if (game.isRunning()) {
 			game.endTurn(&game.left);
 		} else {
@@ -95,7 +95,7 @@ void loop()
 		}
 	}
 
-	if (digitalRead(ROCKER_RIGHT) == LOW) {
+	if (game.activePlayer == &game.right && digitalRead(ROCKER_RIGHT) == LOW) {
 		if (game.isRunning()) {
 			game.endTurn(&game.right);
 		} else {
