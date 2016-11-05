@@ -19,8 +19,8 @@ const byte COMMON_LCD_D4 = 10;
 const byte COMMON_LCD_D5 = 16;
 const byte COMMON_LCD_D6 = 14;
 const byte COMMON_LCD_D7 = 15;
-Button leftButton(0);
-Button rightButton(1);
+const byte ROCKER_LEFT = 0;
+const byte ROCKER_RIGHT = 1;
 Button decButton(2);
 Button pauseButton(3);
 Button incButton(4);
@@ -40,18 +40,6 @@ Clock leftClock(&leftBigTime);
 Clock rightClock(&rightBigTime);
 
 Game game;
-
-
-void leftButtonHandler()
-{
-	leftButton.press();
-}
-
-
-void rightButtonHandler()
-{
-	rightButton.press();
-}
 
 
 void decButtonHandler()
@@ -85,8 +73,9 @@ void setup()
 	game.left.lcd = &leftDisplay;
 	game.right.lcd = &rightDisplay;
 
-	leftButton.setIsr(leftButtonHandler);
-	rightButton.setIsr(rightButtonHandler);
+	pinMode(ROCKER_LEFT, INPUT_PULLUP);
+	pinMode(ROCKER_RIGHT, INPUT_PULLUP);
+
 	decButton.setIsr(decButtonHandler);
 	pauseButton.setIsr(pauseButtonHandler);
 	incButton.setIsr(incButtonHandler);
@@ -98,7 +87,7 @@ void setup()
 
 void loop()
 {
-	if (leftButton.shortPressed()) {
+	if (digitalRead(ROCKER_LEFT) == LOW) {
 		if (game.isRunning()) {
 			game.endTurn(&game.left);
 		} else {
@@ -106,7 +95,7 @@ void loop()
 		}
 	}
 
-	if (rightButton.shortPressed()) {
+	if (digitalRead(ROCKER_RIGHT) == LOW) {
 		if (game.isRunning()) {
 			game.endTurn(&game.right);
 		} else {
