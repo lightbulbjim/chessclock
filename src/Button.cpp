@@ -31,9 +31,8 @@ unsigned long Button::pressedTime()
 {
 	if (this->currentlyPressed()) {
 		return millis() - this->startTime;
-	} else {
-		return 0;
 	}
+	return 0;
 }
 
 
