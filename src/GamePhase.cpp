@@ -10,8 +10,8 @@ void GamePhase::getDescription(char* buffer)
 	static const byte length = 10;
 
 	if (this->moveLimit > 0) {
-		snprintf(buffer, length + 1, "%d/90 +30", this->moveLimit);
+		snprintf(buffer, length + 1, "%d/%d", this->moveLimit, this->time.inMinutes());
 	} else {
-	    snprintf(buffer, length + 1, "G/90 +30");
+	    snprintf(buffer, length + 1, "G/%d", this->time.inMinutes());
 	}
 }
