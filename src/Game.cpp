@@ -13,22 +13,16 @@ int Game::slotToAddress(byte slot)
 
 void Game::clear()
 {
-	GamePhase* phases[3] = {
-		&this->firstPhase,
-		&this->secondPhase,
-		&this->thirdPhase
-	};
-
 	for (int i=0; i<=2; i++) {
-		phases[i]->enabled = (i <= 1);
-		phases[i]->time.hours = 0;
-		phases[i]->time.minutes = 0;
-		phases[i]->time.seconds = 0;
-		phases[i]->delayTime.hours = 0;
-		phases[i]->delayTime.minutes = 0;
-		phases[i]->delayTime.seconds = 0;
-		phases[i]->delayType = NONE;
-		phases[i]->moveLimit = 0;
+		this->phases[i].enabled = (i <= 1);
+		this->phases[i].time.hours = 0;
+		this->phases[i].time.minutes = 0;
+		this->phases[i].time.seconds = 0;
+		this->phases[i].delayTime.hours = 0;
+		this->phases[i].delayTime.minutes = 0;
+		this->phases[i].delayTime.seconds = 0;
+		this->phases[i].delayType = NONE;
+		this->phases[i].moveLimit = 0;
 	}
 
 	this->reset();

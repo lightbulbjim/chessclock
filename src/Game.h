@@ -24,9 +24,11 @@ class Game
 		void pause();
 		void unPause();
 		void tick();
-		GamePhase firstPhase;
-		GamePhase secondPhase;
-		GamePhase thirdPhase;
+		GamePhase firstPhase;  // Delete me
+		GamePhase secondPhase; // Delete me
+		GamePhase thirdPhase;  // Delete me
+		GamePhase phases[3];
+		GamePhase* activePhase;
 		Player left;
 		Player right;
 		Player* activePlayer;
