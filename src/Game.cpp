@@ -184,11 +184,14 @@ void Game::printStatus()
 		players[i]->lcd->setCursor(0, 3);
 
 		if (this->running) {
-			players[i]->lcd->print("          ");
+			char status[] = "          ";
+			this->firstPhase.getDescription(status);
+			players[i]->lcd->print(status);
 		} else {
 			players[i]->lcd->print("PAUSED    ");
 		}
 
+		players[i]->lcd->setCursor(10, 3);
 		players[i]->lcd->print("Moves:    ");
 		players[i]->lcd->setCursor(17, 3);
 		players[i]->lcd->print(players[i]->moves);

@@ -14,6 +14,8 @@ class Time
 		byte minutes = 0;
 		byte seconds = 0;
 		bool isZero();
+		unsigned int inMinutes();
+		unsigned long inSeconds();
 };
 
 #endif

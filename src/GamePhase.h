@@ -24,6 +24,7 @@ class GamePhase
 		Time delayTime;
 		Delay delayType;
 		byte moveLimit;
+		void getDescription(char* buffer);
 };
 
 #endif
