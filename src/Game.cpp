@@ -145,6 +145,7 @@ void Game::endPhase(Player* player)
 			player->clock->time.minutes += player->phase->time.minutes;
 			player->clock->time.seconds += player->phase->time.seconds;
 			player->clock->saveTime();
+			this->printStatus();
 		}
 	}
 }
