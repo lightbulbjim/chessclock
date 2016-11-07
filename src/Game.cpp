@@ -124,8 +124,14 @@ void Game::endTurn(Player* player)
 
 void Game::endPhase(Player* player)
 {
-	if (player->phase < &this->phases[2]) {
-		player->phase++;
+	if (player->phase == &this->phases[2]) {
+		player->flagged = true;
+	} else {
+		if ((player->phase + 1)->enabled) {
+			player->flagged = true;
+		} else {
+			player->phase++;
+		}
 	}
 }
 
