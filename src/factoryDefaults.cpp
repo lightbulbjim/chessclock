@@ -39,11 +39,24 @@ void resetToFactory()
 {
 	byte slot = 1;
 
+	// Test game
+	game.clear();
+	game.phases[0].time.minutes = 1;
+	game.phases[0].delayTime.seconds = 5;
+	game.phases[0].delayType = FISCHER;
+	game.phases[0].moveLimit = 10;
+	game.phases[1].enabled = true;
+	game.phases[1].time.seconds = 30;
+	game.phases[1].delayTime.seconds = 5;
+	game.phases[1].delayType = FISCHER;
+	game.save(slot++);
+
+/*
 	// 5m blitz
 	game.clear();
-//	game.phases[0].time.minutes = 5;
-	game.phases[0].time.minutes = 1;
+	game.phases[0].time.minutes = 5;
 	game.save(slot++);
+*/
 
 	// 10m blitz
 	game.clear();
