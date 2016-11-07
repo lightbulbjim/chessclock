@@ -19,6 +19,7 @@ class Game
 		void save(byte slot);
 		void reset();
 		bool isRunning();
+		bool isFinished();
 		void endTurn(Player* player);
 		void endPhase(Player* player);
 		void pause();

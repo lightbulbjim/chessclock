@@ -102,6 +102,12 @@ bool Game::isRunning()
 }
 
 
+bool Game::isFinished()
+{
+	return (this->left.flagged || this->right.flagged);
+}
+
+
 void Game::endTurn(Player* player)
 {
 	if (player != this->activePlayer) {
