@@ -17,9 +17,9 @@ void GamePhase::getDescription(char* buffer)
 		}
 	} else {
 		if (this->moveLimit > 0) {
-			snprintf(buffer, length + 1, "%d/%d", this->moveLimit, this->time.inMinutes());
+			snprintf(buffer, length + 1, "%d/%dm", this->moveLimit, this->time.inMinutes());
 		} else {
-		    snprintf(buffer, length + 1, "G/%d", this->time.inMinutes());
+		    snprintf(buffer, length + 1, "G/%dm", this->time.inMinutes());
 		}
 	}
 }
