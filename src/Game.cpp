@@ -133,20 +133,19 @@ void Game::endPhase(Player* player)
 	if (player->phase == &this->phases[2]) {
 		if (!this->isFinished()) {
 			player->flagged = true;
-		}
-	} else {
-		if (!(player->phase + 1)->enabled) {
-			if (!this->isFinished()) {
-				player->flagged = true;
-			}
-		} else {
-			player->phase++;
-			player->clock->time.hours += player->phase->time.hours;
-			player->clock->time.minutes += player->phase->time.minutes;
-			player->clock->time.seconds += player->phase->time.seconds;
-			player->clock->saveTime();
 			this->printStatus();
 		}
+	} else if (!(player->phase + 1)->enabled) {
+		if (!this->isFinished()) {
+			player->flagged = true;
+			this->printStatus();
+		}
+	} else {
+		player->phase++;
+		player->clock->time.hours += player->phase->time.hours;
+		player->clock->time.minutes += player->phase->time.minutes;
+		player->clock->time.seconds += player->phase->time.seconds;
+		player->clock->saveTime();
 	}
 }
 

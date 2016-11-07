@@ -41,7 +41,8 @@ void resetToFactory()
 
 	// 5m blitz
 	game.clear();
-	game.phases[0].time.minutes = 5;
+//	game.phases[0].time.minutes = 5;
+	game.phases[0].time.minutes = 1;
 	game.save(slot++);
 
 	// 10m blitz
