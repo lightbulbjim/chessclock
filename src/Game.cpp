@@ -33,23 +33,17 @@ void Game::load(byte slot)
 {
 	int address = slotToAddress(slot);
 
-	GamePhase* phases[3] = {
-		&this->firstPhase,
-		&this->secondPhase,
-		&this->thirdPhase
-	};
-
 	for (int i=0; i<=2; i++) {
-		phases[i]->time.hours          = EEPROM.read(address);
-		phases[i]->time.minutes        = EEPROM.read(address + 1);
-		phases[i]->time.seconds        = EEPROM.read(address + 2);
-		phases[i]->delayTime.hours     = EEPROM.read(address + 3);
-		phases[i]->delayTime.minutes   = EEPROM.read(address + 4);
-		phases[i]->delayTime.seconds   = EEPROM.read(address + 5);
-		phases[i]->delayType   = (Delay) EEPROM.read(address + 6);
-		phases[i]->moveLimit           = EEPROM.read(address + 7);
+		this->phases[i].time.hours          = EEPROM.read(address);
+		this->phases[i].time.minutes        = EEPROM.read(address + 1);
+		this->phases[i].time.seconds        = EEPROM.read(address + 2);
+		this->phases[i].delayTime.hours     = EEPROM.read(address + 3);
+		this->phases[i].delayTime.minutes   = EEPROM.read(address + 4);
+		this->phases[i].delayTime.seconds   = EEPROM.read(address + 5);
+		this->phases[i].delayType   = (Delay) EEPROM.read(address + 6);
+		this->phases[i].moveLimit           = EEPROM.read(address + 7);
 
-		phases[i]->enabled = !phases[i]->time.isZero();
+		this->phases[i].enabled = !this->phases[i].time.isZero();
 
 		address += 8;
 	}
@@ -63,21 +57,15 @@ void Game::save(byte slot)
 {
 	int address = slotToAddress(slot);
 
-	GamePhase* phases[3] = {
-		&this->firstPhase,
-		&this->secondPhase,
-		&this->thirdPhase
-	};
-
 	for (int i=0; i<=2; i++) {
-		EEPROM.update(address, phases[i]->time.hours);
-		EEPROM.update(address + 1, phases[i]->time.minutes);
-		EEPROM.update(address + 2, phases[i]->time.seconds);
-		EEPROM.update(address + 3, phases[i]->delayTime.hours);
-		EEPROM.update(address + 4, phases[i]->delayTime.minutes);
-		EEPROM.update(address + 5, phases[i]->delayTime.seconds);
-		EEPROM.update(address + 6, phases[i]->delayType);
-		EEPROM.update(address + 7, phases[i]->moveLimit);
+		EEPROM.update(address,     this->phases[i].time.hours);
+		EEPROM.update(address + 1, this->phases[i].time.minutes);
+		EEPROM.update(address + 2, this->phases[i].time.seconds);
+		EEPROM.update(address + 3, this->phases[i].delayTime.hours);
+		EEPROM.update(address + 4, this->phases[i].delayTime.minutes);
+		EEPROM.update(address + 5, this->phases[i].delayTime.seconds);
+		EEPROM.update(address + 6, this->phases[i].delayType);
+		EEPROM.update(address + 7, this->phases[i].moveLimit);
 
 		address += 8;
 	}
@@ -96,9 +84,9 @@ void Game::reset()
 
 	for (int i=0; i<=1; i++) {
 		players[i]->clock->stop();
-		players[i]->clock->time = this->firstPhase.time;
+		players[i]->clock->time = this->phases[0].time;
 		players[i]->clock->saveTime();
-		players[i]->phase = &this->firstPhase;
+		players[i]->phase = &this->phases[0];
 		players[i]->moves = 0;
 		players[i]->flagged = false;
 	}
@@ -136,10 +124,8 @@ void Game::endTurn(Player* player)
 
 void Game::endPhase(Player* player)
 {
-	if (player->phase == &this->firstPhase) {
-		player->phase = &this->secondPhase;
-	} else if (player->phase == &this->secondPhase) {
-		player->phase = &this->thirdPhase;
+	if (player->phase < &this->phases[2]) {
+		player->phase++;
 	}
 }
 
@@ -179,7 +165,7 @@ void Game::printStatus()
 
 		if (this->running) {
 			char status[] = "          ";
-			this->firstPhase.getDescription(status);
+			players[i]->phase->getDescription(status);
 			players[i]->lcd->print(status);
 		} else {
 			players[i]->lcd->print("PAUSED    ");
