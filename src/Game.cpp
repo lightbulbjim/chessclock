@@ -131,12 +131,20 @@ void Game::endTurn(Player* player)
 void Game::endPhase(Player* player)
 {
 	if (player->phase == &this->phases[2]) {
-		player->flagged = true;
-	} else {
-		if ((player->phase + 1)->enabled) {
+		if (!this->isFinished()) {
 			player->flagged = true;
+		}
+	} else {
+		if (!(player->phase + 1)->enabled) {
+			if (!this->isFinished()) {
+				player->flagged = true;
+			}
 		} else {
 			player->phase++;
+			player->clock->time.hours += player->phase->time.hours;
+			player->clock->time.minutes += player->phase->time.minutes;
+			player->clock->time.seconds += player->phase->time.seconds;
+			player->clock->saveTime();
 		}
 	}
 }
@@ -175,7 +183,9 @@ void Game::printStatus()
 		players[i]->lcd->print("                    ");
 		players[i]->lcd->setCursor(0, 3);
 
-		if (this->running) {
+		if (players[i]->flagged) {
+			players[i]->lcd->print("FLAG      ");
+		} else if (this->running) {
 			char status[] = "          ";
 			players[i]->phase->getDescription(status);
 			players[i]->lcd->print(status);
@@ -193,5 +203,9 @@ void Game::printStatus()
 
 void Game::tick()
 {
+	if (this->isRunning() && this->activePlayer->clock->time.isZero()) {
+		this->endPhase(this->activePlayer);
+	}
+
 	this->activePlayer->clock->tick();
 }

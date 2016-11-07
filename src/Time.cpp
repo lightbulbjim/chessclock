@@ -7,7 +7,7 @@
 
 bool Time::isZero()
 {
-	return (this->hours == 0) || (this->minutes == 0) || (this->seconds == 0);
+	return (this->hours == 0) && (this->minutes == 0) && (this->seconds == 0);
 }
 
 
