@@ -18,7 +18,6 @@ class Player
 		GamePhase* phase;
 		unsigned int moves;
 		bool flagged;
-		char statusCache[20];
 };
 
 #endif
