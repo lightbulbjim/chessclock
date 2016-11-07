@@ -184,7 +184,7 @@ void Game::printStatus()
 		players[i]->lcd->setCursor(0, 3);
 
 		if (players[i]->flagged) {
-			players[i]->lcd->print("FLAG      ");
+			players[i]->lcd->print("FLAG!     ");
 		} else if (this->running) {
 			char status[] = "          ";
 			players[i]->phase->getDescription(status);
