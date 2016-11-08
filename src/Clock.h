@@ -18,6 +18,7 @@ class Clock
 		void saveTime();
 		void start();
 		void stop();
+		void addTime(Time additionalTime);
 		Time time;
 	private:
 		BigTime* display;

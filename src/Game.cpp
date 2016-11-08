@@ -113,10 +113,14 @@ void Game::endTurn(Player* player)
 	if (player != this->activePlayer) {
 		return;
 	}
-	
+
 	this->activePlayer->clock->stop();
 	this->activePlayer->moves++;
 	this->printStatus();
+
+	if (player->phase->delayType == FISCHER) {
+		player->clock->addTime(player->phase->delayTime);
+	}
 
 	if (player == &this->left) {
 		this->activePlayer = &this->right;
@@ -142,10 +146,7 @@ void Game::endPhase(Player* player)
 		}
 	} else {
 		player->phase++;
-		player->clock->time.hours += player->phase->time.hours;
-		player->clock->time.minutes += player->phase->time.minutes;
-		player->clock->time.seconds += player->phase->time.seconds;
-		player->clock->saveTime();
+		player->clock->addTime(player->phase->time);
 	}
 }
 

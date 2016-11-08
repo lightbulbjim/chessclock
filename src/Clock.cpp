@@ -40,6 +40,15 @@ void Clock::stop()
 }
 
 
+void Clock::addTime(Time additionalTime)
+{
+	this->time.hours += additionalTime.hours;
+	this->time.minutes += additionalTime.minutes;
+	this->time.seconds += additionalTime.seconds;
+	this->saveTime();
+}
+
+
 void Clock::tick()
 {
 	if (this->running) {
