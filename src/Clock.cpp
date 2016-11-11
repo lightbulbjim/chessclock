@@ -42,10 +42,9 @@ void Clock::stop()
 
 void Clock::addTime(Time additionalTime)
 {
-	this->time.hours += additionalTime.hours;
-	this->time.minutes += additionalTime.minutes;
-	this->time.seconds += additionalTime.seconds;
-	this->saveTime();
+	this->remainingMilliseconds += (unsigned long) additionalTime.hours * 3600000;
+	this->remainingMilliseconds += (unsigned long) additionalTime.minutes * 60000;
+	this->remainingMilliseconds += (unsigned long) additionalTime.seconds * 1000;
 }
 
 
