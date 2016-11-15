@@ -25,6 +25,12 @@ Button decButton(2);
 Button pauseButton(3);
 Button incButton(4);
 
+enum SystemMode {
+	PLAY,
+	EDIT,
+	PRESETS
+} mode;
+
 // Number of memory slots.
 const byte SLOTS = 40;
 
@@ -82,6 +88,7 @@ void setup()
 
 	resetToFactory();
 	game.load(1);
+	mode = PLAY;
 }
 
 
@@ -103,15 +110,30 @@ void loop()
 		}
 	}
 
-	if (pauseButton.longPressed()) {
-		if (!game.isRunning()) {
-			game.reset();
+	switch (mode)
+	{
+		case PLAY:
+		{
+			if (pauseButton.longPressed()) {
+				if (!game.isRunning()) {
+					game.reset();
+				}
+			} else if (pauseButton.shortPressed()) {
+				if (game.isRunning()) {
+					game.pause();
+				} else {
+					game.unPause();
+				}
+			}
+			break;
 		}
-	} else if (pauseButton.shortPressed()) {
-		if (game.isRunning()) {
-			game.pause();
-		} else {
-			game.unPause();
+		case EDIT:
+		{
+			break;
+		}
+		case PRESETS:
+		{
+			break;
 		}
 	}
 
