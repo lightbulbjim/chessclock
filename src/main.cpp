@@ -138,12 +138,4 @@ void loop()
 	}
 
 	game.tick();
-
-	static unsigned long loopCounter = 0;
-	if ((millis() >= 5000) && (millis() < 6000)) {
-		leftDisplay.setCursor(0,3);
-		leftDisplay.print(loopCounter / 5);
-	} else {
-		loopCounter++;
-	}
 }
