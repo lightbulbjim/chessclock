@@ -125,17 +125,32 @@ void loop()
 					game.unPause();
 				}
 			}
+
+			if (!game.isRunning()) {
+				if (decButton.longPressed()) {
+					mode = PRESETS;
+				}
+				if (incButton.longPressed()) {
+					mode = EDIT;
+				}
+			}
+
+			game.tick();
 			break;
 		}
 		case EDIT:
 		{
+			if (pauseButton.longPressed()) {
+				mode = PLAY;
+			}
 			break;
 		}
 		case PRESETS:
 		{
+			if (pauseButton.longPressed()) {
+				mode = PLAY;
+			}
 			break;
 		}
 	}
-
-	game.tick();
 }
